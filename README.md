@@ -24,11 +24,16 @@ Connect clients to port **5020**. The container runs without root privileges on
 |---|---|
 | `/healthz` | Process liveness; Docker healthcheck |
 | `/readyz` | Accepting requests |
-| `/health` | Device communication healthy and recent; suitable for Uptime Kuma |
+| `/health` | Valid backend response within the last 30 s for every device; suitable for Uptime Kuma |
 | `/metrics` | Prometheus metrics |
 
-Monitoring listens on port **8080**. Device health is unknown until the first
-successful client request. Checks are passive and do not access registers.
+Monitoring listens on port **8080**. `/health` returns 503 until each device has
+answered, then stays green while responses remain within `health_max_age` (default
+30 s). Individual failures do not immediately turn it red. Valid Modbus exceptions
+count as responses; relay-generated errors do not. Checks are passive: stopped
+polling also turns health red. They do not access registers or validate data values.
+For Kuma, a name such as **“Modbus: Datenfluss Wechselrichter”** describes this
+better than “inverter reachable”. See the [monitoring details](docs/configuration.md#health-und-uptime-kuma).
 Expose Modbus and monitoring only on your trusted network; neither provides authentication.
 
 ## Configuration

@@ -383,7 +383,6 @@ async fn worker(
                     // A cancelled read/write may have consumed only part of an ADU.
                     worker.connection = None;
                     if worker.in_flight {
-                        worker.stats.healthy.store(false, Relaxed);
                         worker.next_request = Instant::now() + duration(worker.config.modbus.request_delay);
                         worker.next_connect = Instant::now() + duration(worker.config.modbus.reconnect_delay);
                     }
@@ -488,7 +487,6 @@ impl Worker {
                 }
                 Err(error) => {
                     self.connection = None;
-                    self.stats.healthy.store(false, Relaxed);
                     self.stats.failures.fetch_add(1, Relaxed);
                     match error.kind() {
                         io::ErrorKind::TimedOut => {

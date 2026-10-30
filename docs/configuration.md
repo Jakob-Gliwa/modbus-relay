@@ -7,7 +7,7 @@ YAML (`.yaml`, `.yml`), TOML und JSON werden unterstützt. Beispiel:
 ```yaml
 monitoring:
   bind: 0.0.0.0:8080
-  health_max_age: 60
+  health_max_age: 30
   max_connections: 16
 devices:
   - name: inverter
@@ -96,6 +96,38 @@ Bewusste Unterschiede zur Python-Version:
   reguläre Ausdrücke aus `EnvFilter` werden nicht unterstützt.
 - IPv6 benötigt eckige Klammern. Unbegrenzte Timeouts werden nicht übernommen.
   Konfiguration wird beim Start geladen; Änderungen benötigen einen Neustart.
+
+## Health und Uptime Kuma
+
+`/health` überwacht passiv den Antwortfluss: HTTP 200, wenn für jedes konfigurierte
+Gerät innerhalb von `monitoring.health_max_age` eine gültige Backend-Antwort
+eingegangen ist. Standard: **30 Sekunden**. Vor der ersten Antwort, nach Ablauf
+dieses Fensters oder beim Herunterfahren liefert der Endpoint HTTP 503.
+Gültige Modbus-Exceptions zählen als Antworten; vom Relay erzeugte Fehlerantworten
+verlängern das Fenster nicht.
+
+Einzelne Disconnects, Timeouts oder fehlerhafte Frames setzen Health nicht sofort
+auf rot. Das gilt auch, wenn ein Gerät bei einer ungültigen Registeradresse die
+Verbindung schließt und der Retry ebenfalls scheitert. Die Fehler bleiben in Logs
+und Metrics sichtbar. Ein echter Ausfall wird spätestens nach Ablauf des Fensters
+seit der letzten gültigen Antwort beim nächsten Health-Aufruf sichtbar.
+
+Der Relay erzeugt dafür keine Modbus-Anfragen. Stoppen alle Clients ihr Polling,
+wird Health ebenfalls rot, selbst wenn das Gerät erreichbar wäre. Health bestätigt
+Kommunikation, nicht die Richtigkeit oder Aktualität einzelner Registerwerte.
+`/healthz` überwacht separat den Relay-Prozess; der Docker-Healthcheck nutzt diesen
+Endpoint. `modbus_relay_backend_healthy` verwendet dieselbe Frischeprüfung wie
+`/health`; `backend_connected` beschreibt nur den Zustand des Sockets.
+
+Für häufiges Polling, etwa jede Sekunde, sind 30 Sekunden ein sinnvoller Puffer.
+Bei selteneren Abfragen das Fenster entsprechend erhöhen. Ein explizit bestehender
+Wert von 60 bleibt erhalten: zum Umstellen `health_max_age: 30` setzen und neu starten.
+
+Für Kuma: HTTP-Monitor auf `http://<relay-host>:8080/health`, erwarteter Status 200,
+Name **„Modbus: Datenfluss Wechselrichter“**. Bei 60 Sekunden Prüfintervall und
+einem Retry nach weiteren 60 Sekunden erfolgt der Alarm ungefähr 90–150 Sekunden
+nach der letzten gültigen Antwort, zuzüglich HTTP-Timeouts. Das tatsächliche
+Retry-Intervall muss dazu passen.
 
 ## RTU over TCP
 
