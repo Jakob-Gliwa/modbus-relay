@@ -3,8 +3,10 @@ FROM rust:1.99.1-alpine AS build
 WORKDIR /build
 COPY Cargo.toml Cargo.lock ./
 COPY src ./src
+ARG RELEASE_VERSION
 RUN --mount=type=secret,id=build_ca \
     if [ -f /run/secrets/build_ca ]; then export CARGO_HTTP_CAINFO=/run/secrets/build_ca; fi; \
+    if [ -n "$RELEASE_VERSION" ]; then export MODBUS_RELAY_VERSION="${RELEASE_VERSION#v}"; fi; \
     cargo build --locked --release && cp target/release/modbus-relay /modbus-relay
 
 FROM build AS test

@@ -1,0 +1,29 @@
+name: Automate tested updates
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+  schedule:
+    - cron: '23 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+concurrency:
+  group: automate-tested-updates
+  cancel-in-progress: false
+jobs:
+  updates:
+    if: github.repository == 'Jakob-Gliwa/modbus-relay'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      # Always execute trusted main, never the workflow_run PR's code/artifacts.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          persist-credentials: false
+      - run: python3 scripts/automate-updates.py
+        env:
+          GH_TOKEN: ${{ github.token }}
