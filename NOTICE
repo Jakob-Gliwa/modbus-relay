@@ -1,0 +1,7 @@
+modbus-relay is a Rust reimplementation informed by the behavior and bug reports
+of tiagocoutinho/modbus-proxy, Copyright (c) 2020-2025 Tiago Coutinho and contributors.
+https://github.com/tiagocoutinho/modbus-proxy
+
+This project is distributed under GPL-3.0-only. The full license is in LICENSE.
+Upstream review references and individual contribution credits are recorded in
+docs/upstream-audit.md. No affiliation with or endorsement by upstream is implied.

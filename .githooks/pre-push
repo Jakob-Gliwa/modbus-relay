@@ -1,0 +1,17 @@
+#!/bin/sh
+# Maintainer guard: enable with git config core.hooksPath .githooks.
+set -eu
+case "$2" in
+  https://github.com/Jakob-Gliwa/modbus-relay.git) ;;
+  *) echo 'Push refused: unexpected repository. Expected Jakob-Gliwa/modbus-relay.' >&2; exit 1 ;;
+esac
+account=$(gh api user --jq .login) || exit 1
+if [ "$account" != 'Jakob-Gliwa' ]; then
+  echo 'Push refused: authenticate GitHub CLI as Jakob-Gliwa first.' >&2
+  exit 1
+fi
+command -v gitleaks >/dev/null 2>&1 || {
+  echo 'Push refused: install gitleaks to scan outgoing history.' >&2
+  exit 1
+}
+gitleaks git . --redact --no-banner

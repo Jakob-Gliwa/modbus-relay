@@ -1,0 +1,11 @@
+*
+!Cargo.toml
+!Cargo.lock
+!src/
+!src/**
+!LICENSE
+!tests/
+!tests/**
+!examples/
+!examples/**
+!config.example.yaml

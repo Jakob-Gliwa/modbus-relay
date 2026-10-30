@@ -1,0 +1,25 @@
+/target/
+/config.yaml
+/benchmark-results*.json
+*.profraw
+*.profdata
+.DS_Store
+
+# Local credentials, configurations and development output
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+/config.*
+!/config.example.yaml
+/coverage/
+*.log
+# Local benchmark snapshots contain machine/build metadata and source archives.
+/docs/benchmarks/
+
+# Coverage reports and local scan output
+/lcov.info
+/gitleaks-report.*

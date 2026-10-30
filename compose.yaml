@@ -1,0 +1,19 @@
+services:
+  modbus-relay:
+    image: modbus-relay:local
+    build: .
+    restart: unless-stopped
+    ports:
+      - "5020:5020"
+      - "8080:8080"
+    volumes:
+      - ./config.yaml:/config/modbus-proxy.yml:ro
+    read_only: true
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 32m
+    pids_limit: 32
+    stop_grace_period: 10s
+    environment:
+      RUST_LOG: info

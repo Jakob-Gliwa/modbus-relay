@@ -1,0 +1,32 @@
+monitoring:
+  bind: 0.0.0.0:8080
+  # /health requires a successful response within this interval.
+  # Set this above your clients' normal polling interval.
+  health_max_age: 60
+
+devices:
+  - name: inverter
+    modbus:
+      url: 192.0.2.10:502
+      timeout: 2
+      # Total attempts, including the first. 1 gives lowest failure latency.
+      attempts: 1
+      connection_time: 0
+      reconnect_delay: 0.1
+      request_delay: 0
+      idle_time: 0
+      connection_ttl: 0
+      # Writes and unknown function codes are not retried by default.
+      retry_writes: false
+    listen:
+      bind: 0.0.0.0:5020
+    # Alternatively: listeners: [{bind: '0.0.0.0:5020'}, {bind: '0.0.0.0:5021'}]
+    unit_id_remapping: {}
+    max_clients: 128
+    queue_capacity: 128
+    queue_timeout: 5
+    # Optionales Gesamtbudget inkl. Queue, Connect, Pausen und Retries.
+    # Ohne Angabe automatisch aus den übrigen Zeitlimits berechnet.
+    # request_timeout: 10
+    client_idle_timeout: 300
+    frame_timeout: 5

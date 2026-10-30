@@ -1,0 +1,19 @@
+[monitoring]
+bind = "0.0.0.0:8080"
+health_max_age = 60
+
+[[devices]]
+name = "inverter"
+max_clients = 128
+queue_capacity = 128
+
+[devices.modbus]
+url = "192.0.2.10:502"
+timeout = 2
+attempts = 1
+
+[devices.listen]
+bind = "0.0.0.0:5020"
+
+[devices.unit_id_remapping]
+"1" = 0

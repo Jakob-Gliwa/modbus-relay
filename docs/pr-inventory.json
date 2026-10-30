@@ -1,0 +1,2432 @@
+{
+  "reviewed_at": "2026-10-30",
+  "note": "PR inventory screened for relevance; detailed findings and review limits in cross-project-audit.md. Search results do not carry merge/head metadata.",
+  "repositories": [
+    {
+      "repository": "tiagocoutinho/modbus-proxy",
+      "scope": "all",
+      "count": 32,
+      "pull_requests": [
+        {
+          "number": 62,
+          "title": "Frame exception replies by the protocol, not by the header",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/62",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "1ee1ec080efc195617badf88835fdb84068d5c10"
+        },
+        {
+          "number": 61,
+          "title": "fix: validate MBAP Transaction ID and reset desynchronized backend connection",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/61",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "210124c253e359919f6ac05ad91933bca969fa47"
+        },
+        {
+          "number": 60,
+          "title": "feat: make retry attempts configurable and clean up connection retry options",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/60",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "ff38924532134677d6124dd1d0f7c123e51464f8"
+        },
+        {
+          "number": 57,
+          "title": "feat: add SunSpec register type conversion and multiple listeners per…",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/57",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "1a707e7aa7fa7d0f5ef4af5027593736f147415f"
+        },
+        {
+          "number": 56,
+          "title": "Sunspec Type Conversion",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/56",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "79509948c725a1c2da2320543dbd6c8311ef2c86"
+        },
+        {
+          "number": 55,
+          "title": "Optional mode for RTU over TCP",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/55",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "e7c91c9ad4bd8dd6caf823918397d02f31ece452"
+        },
+        {
+          "number": 52,
+          "title": "Idle time, connection TTL and other features",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/52",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "ac65730fa15ca6f76f6e31db48404bc1beffe8e0"
+        },
+        {
+          "number": 51,
+          "title": "Add connection ID to track requests and responses in log",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/51",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "bc3ca3e045f1fbf2c8b996b84dd88292ac167937"
+        },
+        {
+          "number": 49,
+          "title": "Update README.md",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/49",
+          "state": "closed",
+          "merged_at": "2025-06-05T15:51:06Z",
+          "head_sha": "fa6c80c832c3de56fd9176f4204ee15d5f4b53d7"
+        },
+        {
+          "number": 46,
+          "title": "Torwards 1.0.0",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/46",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "683bfb7e76a1aa4aadf54f438b572afa4935121d"
+        },
+        {
+          "number": 44,
+          "title": "Add Kubernetes to Docu",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/44",
+          "state": "closed",
+          "merged_at": "2024-09-23T05:36:16Z",
+          "head_sha": "50fbbf172a108e88777578df1f8c2af81fa75d8e"
+        },
+        {
+          "number": 43,
+          "title": "Add Kubernetes Example Manifests",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/43",
+          "state": "closed",
+          "merged_at": "2024-09-22T05:05:29Z",
+          "head_sha": "d441083fe814fc650e4e599322ba0ca4f6c6fa75"
+        },
+        {
+          "number": 42,
+          "title": "Add sample configuration file",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/42",
+          "state": "closed",
+          "merged_at": "2024-09-04T11:19:24Z",
+          "head_sha": "ce236b0b34f883b70a02441196f1cfded64feff4"
+        },
+        {
+          "number": 40,
+          "title": "Add modbus-proxy.service file",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/40",
+          "state": "closed",
+          "merged_at": "2024-09-04T11:10:40Z",
+          "head_sha": "f29adfcc0a713d2240e28b848d3c7ad9b0a12fd8"
+        },
+        {
+          "number": 39,
+          "title": "Relax minimum required version of dependencies",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/39",
+          "state": "closed",
+          "merged_at": "2024-09-04T11:09:42Z",
+          "head_sha": "8cd971f0c5d8ad36b6c828120c7a95720aeb081a"
+        },
+        {
+          "number": 38,
+          "title": "Fix incorrect PYTHONPATH during tests",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/38",
+          "state": "closed",
+          "merged_at": "2024-09-04T11:06:33Z",
+          "head_sha": "8951ad630ae9151dfc73fb143e364eef396f8608"
+        },
+        {
+          "number": 37,
+          "title": "Dockerfile fix and remove deprecated log-config-file",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/37",
+          "state": "closed",
+          "merged_at": "2024-09-02T06:17:15Z",
+          "head_sha": "fd2f382f9945e99074897477b0c4007f099af57b"
+        },
+        {
+          "number": 36,
+          "title": "Update to newer versions",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/36",
+          "state": "closed",
+          "merged_at": "2024-08-31T07:23:57Z",
+          "head_sha": "9f198b57def83afe31ea04eb02026b685da974b8"
+        },
+        {
+          "number": 26,
+          "title": "Support remapping unit IDs for wonky clients and servers",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/26",
+          "state": "closed",
+          "merged_at": "2024-03-19T04:57:29Z",
+          "head_sha": "09bb55ba8792f4da198646a170d47130dcbc8aae"
+        },
+        {
+          "number": 21,
+          "title": "Update README.md",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/21",
+          "state": "closed",
+          "merged_at": "2022-11-26T06:52:11Z",
+          "head_sha": "a1045c0423d53ea5db6e0fb06e97251423afc204"
+        },
+        {
+          "number": 20,
+          "title": "Fix error tox config file not found",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/20",
+          "state": "closed",
+          "merged_at": "2022-11-25T05:40:17Z",
+          "head_sha": "a9d84bbf134b765129f86ce5fcc66477b69eb2b5"
+        },
+        {
+          "number": 17,
+          "title": "Fix #16: Crashing very often",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/17",
+          "state": "closed",
+          "merged_at": "2021-12-18T07:05:46Z",
+          "head_sha": "995bb6130654b247aeb5ced4a8f1c8c227938181"
+        },
+        {
+          "number": 15,
+          "title": "Fix dockerfile #7",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/15",
+          "state": "closed",
+          "merged_at": "2021-10-21T08:15:17Z",
+          "head_sha": "632e49d672b90ba6d6a785ee34ea623ecee6c2e6"
+        },
+        {
+          "number": 13,
+          "title": "Fix github action publish pypi",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/13",
+          "state": "closed",
+          "merged_at": "2021-09-29T18:30:08Z",
+          "head_sha": "29b5e14bc7fd8f100b93f15e77ce8e74f254cf4f"
+        },
+        {
+          "number": 12,
+          "title": "Create github action to publish on pypi",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/12",
+          "state": "closed",
+          "merged_at": "2021-09-29T16:24:38Z",
+          "head_sha": "df7d69b1c5fd265d34f5a8cfd3823975917d1801"
+        },
+        {
+          "number": 11,
+          "title": "Additional configuration tests",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/11",
+          "state": "closed",
+          "merged_at": "2021-09-29T16:07:03Z",
+          "head_sha": "a547414d7766392d0b91d6768ccd9047b617d41e"
+        },
+        {
+          "number": 10,
+          "title": "Configure github actions",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/10",
+          "state": "closed",
+          "merged_at": "2021-09-29T10:47:02Z",
+          "head_sha": "ac3dfff30f9c66872a426b0947d9897a90b68d53"
+        },
+        {
+          "number": 9,
+          "title": "Prepare project for github actions: pyproject.toml, setup.cfg, pytest, tox oh my!",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/9",
+          "state": "closed",
+          "merged_at": "2021-09-29T10:07:07Z",
+          "head_sha": "25ef3872b5f72d31104d7aeff15f03d43841e63d"
+        },
+        {
+          "number": 8,
+          "title": "Add basic unit tests",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/8",
+          "state": "closed",
+          "merged_at": "2021-09-28T17:01:41Z",
+          "head_sha": "9bb11a7d6499106f043c4d7e33bf431207571fcc"
+        },
+        {
+          "number": 7,
+          "title": "Update Dockerfile",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/7",
+          "state": "closed",
+          "merged_at": "2021-09-28T10:27:41Z",
+          "head_sha": "981e56684269b451bb78ee777b46e18182835e88"
+        },
+        {
+          "number": 6,
+          "title": "Support multiple bridges",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/6",
+          "state": "closed",
+          "merged_at": "2021-09-28T09:35:55Z",
+          "head_sha": "a35ea8546525b4647ed00f0272351bcda2572756"
+        },
+        {
+          "number": 5,
+          "title": "Add modbus connection time delay",
+          "url": "https://github.com/tiagocoutinho/modbus-proxy/pull/5",
+          "state": "closed",
+          "merged_at": "2021-09-23T18:53:20Z",
+          "head_sha": "e613cebb5181421d1a446b581d6affd5a35188de"
+        }
+      ]
+    },
+    {
+      "repository": "tma/mbproxy",
+      "scope": "all",
+      "count": 12,
+      "pull_requests": [
+        {
+          "number": 15,
+          "title": "chore(deps): bump github.com/grid-x/modbus from 0.0.0-20260122103929-e192bc287e6e to 1.5.1 in the all-dependencies group",
+          "url": "https://github.com/tma/mbproxy/pull/15",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "f7be80a5ecac62a3763a228ad07294a9e0d76b6e"
+        },
+        {
+          "number": 14,
+          "title": "feat: forward vendor function codes",
+          "url": "https://github.com/tma/mbproxy/pull/14",
+          "state": "closed",
+          "merged_at": "2026-08-17T20:41:12Z",
+          "head_sha": "2684093f50d18e303a2de8ffb3f57f5be4df85e5"
+        },
+        {
+          "number": 12,
+          "title": "chore(deps): bump actions/setup-go from 6 to 7 in the all-actions group",
+          "url": "https://github.com/tma/mbproxy/pull/12",
+          "state": "closed",
+          "merged_at": "2026-08-01T22:11:10Z",
+          "head_sha": "8db6855c194f559ae7c887a50f7600afee53a964"
+        },
+        {
+          "number": 11,
+          "title": "feat: add request diagnostics",
+          "url": "https://github.com/tma/mbproxy/pull/11",
+          "state": "closed",
+          "merged_at": "2026-07-30T19:11:45Z",
+          "head_sha": "1a408e2076f9b75e8f93d951d022c05be18e2d71"
+        },
+        {
+          "number": 10,
+          "title": "fix: bound upstream request failures",
+          "url": "https://github.com/tma/mbproxy/pull/10",
+          "state": "closed",
+          "merged_at": "2026-07-30T18:39:56Z",
+          "head_sha": "c49ab1518db84567f9d21a594c4d27375fa83e72"
+        },
+        {
+          "number": 9,
+          "title": "chore(deps): bump actions/checkout from 6 to 7 in the all-actions group",
+          "url": "https://github.com/tma/mbproxy/pull/9",
+          "state": "closed",
+          "merged_at": "2026-07-21T20:12:22Z",
+          "head_sha": "285329d4d1caf52c381071eb8c9397f41327c0f8"
+        },
+        {
+          "number": 8,
+          "title": "refactor: per-register cache to fix stale data on writes",
+          "url": "https://github.com/tma/mbproxy/pull/8",
+          "state": "closed",
+          "merged_at": "2026-05-01T22:39:03Z",
+          "head_sha": "ac66043ae96feda79561d15e876ba848c669554e"
+        },
+        {
+          "number": 7,
+          "title": "chore(deps): bump the all-actions group with 5 updates",
+          "url": "https://github.com/tma/mbproxy/pull/7",
+          "state": "closed",
+          "merged_at": "2026-04-02T19:28:39Z",
+          "head_sha": "16f01ff3226243dc93c5e15f31b7ab2f87ae8314"
+        },
+        {
+          "number": 6,
+          "title": "Restore HTTP-based health server, make it opt-in",
+          "url": "https://github.com/tma/mbproxy/pull/6",
+          "state": "closed",
+          "merged_at": "2026-03-11T00:15:23Z",
+          "head_sha": "c9c4fde47526f9aa08bb37ce11daa060b0077e50"
+        },
+        {
+          "number": 5,
+          "title": "Remove local health port binding, check upstream directly, and fix Docker PR CI",
+          "url": "https://github.com/tma/mbproxy/pull/5",
+          "state": "closed",
+          "merged_at": "2026-03-10T08:18:27Z",
+          "head_sha": "c889f03a6c4c54ef4951e4218f97eb9a60ab771c"
+        },
+        {
+          "number": 2,
+          "title": "chore(deps): bump the all-actions group across 1 directory with 2 updates",
+          "url": "https://github.com/tma/mbproxy/pull/2",
+          "state": "closed",
+          "merged_at": "2026-01-23T08:25:56Z",
+          "head_sha": "ef7cdc89dce191b0686dc5adfa2d489955696ed7"
+        },
+        {
+          "number": 1,
+          "title": "chore(deps): bump the all-actions group with 3 updates",
+          "url": "https://github.com/tma/mbproxy/pull/1",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "970b853ff032f0a92cd297937852174cad519246"
+        }
+      ]
+    },
+    {
+      "repository": "3cky/mbusd",
+      "scope": "all",
+      "count": 30,
+      "pull_requests": [
+        {
+          "number": 135,
+          "title": "Implement optional RS-485 local echo handling with regression tests",
+          "url": "https://github.com/3cky/mbusd/pull/135",
+          "state": "closed",
+          "merged_at": "2026-10-08T08:56:27Z",
+          "head_sha": "072782b055d045537070153990f83ff067b85126"
+        },
+        {
+          "number": 132,
+          "title": "Fix truncated FC23 (Read/Write Multiple Registers) responses",
+          "url": "https://github.com/3cky/mbusd/pull/132",
+          "state": "closed",
+          "merged_at": "2026-10-07T13:24:59Z",
+          "head_sha": "a804b68ed48566ea386b75b1734935a024f2d38c"
+        },
+        {
+          "number": 128,
+          "title": "Allow to work with all modbus RTU command",
+          "url": "https://github.com/3cky/mbusd/pull/128",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "0bb53b8ba2af4a1adf9aaea59d88918a4e871edf"
+        },
+        {
+          "number": 126,
+          "title": "CMakeLists: update min version to 3.10 for CMake >= 4.0 support",
+          "url": "https://github.com/3cky/mbusd/pull/126",
+          "state": "closed",
+          "merged_at": "2025-12-01T12:57:30Z",
+          "head_sha": "e01806a24f08c798a42934eac0d46caa05611c1a"
+        },
+        {
+          "number": 119,
+          "title": "Update conn.c",
+          "url": "https://github.com/3cky/mbusd/pull/119",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "54bcfa45a5d9bfbe84f3985acef4ea103e97cd42"
+        },
+        {
+          "number": 115,
+          "title": "Add one char delay before switching TRX control, fixed warnings",
+          "url": "https://github.com/3cky/mbusd/pull/115",
+          "state": "closed",
+          "merged_at": "2025-01-10T09:15:30Z",
+          "head_sha": "c4222624cba57861c1782c132fb21897f2d21b2c"
+        },
+        {
+          "number": 109,
+          "title": "Mark mbusd as a pure C project",
+          "url": "https://github.com/3cky/mbusd/pull/109",
+          "state": "closed",
+          "merged_at": "2024-07-19T13:18:33Z",
+          "head_sha": "c72a50ee2c588e011081b64a82f53d87577364db"
+        },
+        {
+          "number": 103,
+          "title": "Change Dockerfileto install required packages for linux serial.h",
+          "url": "https://github.com/3cky/mbusd/pull/103",
+          "state": "closed",
+          "merged_at": "2024-02-21T14:15:17Z",
+          "head_sha": "ed984f0257ed8187cb8185b9074ef4778543ee91"
+        },
+        {
+          "number": 99,
+          "title": "Implement IOCTL control of RS-485 transmitter",
+          "url": "https://github.com/3cky/mbusd/pull/99",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "dc52352535dbf0a247fbb2042269f6e246f593d1"
+        },
+        {
+          "number": 98,
+          "title": "Add new flag (-r) to support inverted RTS flow control",
+          "url": "https://github.com/3cky/mbusd/pull/98",
+          "state": "closed",
+          "merged_at": "2023-11-27T12:14:38Z",
+          "head_sha": "28cfe6974d3aac8e821cf64a462e9512c468279f"
+        },
+        {
+          "number": 90,
+          "title": "Logging fix and enhancement",
+          "url": "https://github.com/3cky/mbusd/pull/90",
+          "state": "closed",
+          "merged_at": "2023-12-25T09:52:43Z",
+          "head_sha": "164accb10a839807113aaaa403872131baffd7ce"
+        },
+        {
+          "number": 83,
+          "title": "Do not segfault when closing last connection",
+          "url": "https://github.com/3cky/mbusd/pull/83",
+          "state": "closed",
+          "merged_at": "2022-04-06T14:19:09Z",
+          "head_sha": "bb255af23803ddf63dd26d59d9016a63b367d321"
+        },
+        {
+          "number": 79,
+          "title": "add Dockerfile",
+          "url": "https://github.com/3cky/mbusd/pull/79",
+          "state": "closed",
+          "merged_at": "2021-11-15T11:04:05Z",
+          "head_sha": "24d7936703ac4733a4c79df3dd202f222d6a8a2c"
+        },
+        {
+          "number": 75,
+          "title": "feature-reply-on-broadcast",
+          "url": "https://github.com/3cky/mbusd/pull/75",
+          "state": "closed",
+          "merged_at": "2021-07-06T13:38:11Z",
+          "head_sha": "b22ffa08569ac8e00b6402bc2652562261ae8ea1"
+        },
+        {
+          "number": 63,
+          "title": "Show an error when trying to use unsupported baudrate",
+          "url": "https://github.com/3cky/mbusd/pull/63",
+          "state": "closed",
+          "merged_at": "2020-08-13T07:23:28Z",
+          "head_sha": "32344e5f9499cafe02d5785c74991403afd06499"
+        },
+        {
+          "number": 62,
+          "title": "Add more baudrates",
+          "url": "https://github.com/3cky/mbusd/pull/62",
+          "state": "closed",
+          "merged_at": "2020-08-13T07:17:38Z",
+          "head_sha": "4bf9d94713100c6e895b833b23f89c1a318f6965"
+        },
+        {
+          "number": 50,
+          "title": "added informaiton from a ticket question and dev information",
+          "url": "https://github.com/3cky/mbusd/pull/50",
+          "state": "closed",
+          "merged_at": "2019-05-27T08:15:23Z",
+          "head_sha": "82b286d47f39faeb38149229d2177e82e8ae7709"
+        },
+        {
+          "number": 46,
+          "title": "python module version freeze, pymodbus pump to v2.2.0",
+          "url": "https://github.com/3cky/mbusd/pull/46",
+          "state": "closed",
+          "merged_at": "2019-04-22T07:53:48Z",
+          "head_sha": "e5a8dc9f0a89623bf36cbd29465ca14bb7fcbfc5"
+        },
+        {
+          "number": 43,
+          "title": "modbus: read only a single frame at a time",
+          "url": "https://github.com/3cky/mbusd/pull/43",
+          "state": "closed",
+          "merged_at": "2019-01-28T07:42:06Z",
+          "head_sha": "5c064928aea65b17b52da06e26804a5742865d40"
+        },
+        {
+          "number": 42,
+          "title": "cmake armhf: set CPack architecture",
+          "url": "https://github.com/3cky/mbusd/pull/42",
+          "state": "closed",
+          "merged_at": "2019-01-10T10:57:48Z",
+          "head_sha": "c7efb2a3ce2454c89d72d8f2b70b447784735f2e"
+        },
+        {
+          "number": 35,
+          "title": "Test simplification",
+          "url": "https://github.com/3cky/mbusd/pull/35",
+          "state": "closed",
+          "merged_at": "2018-06-19T15:31:44Z",
+          "head_sha": "ab99734d87cd27fb44ea92dbe6e4052dc0e900bb"
+        },
+        {
+          "number": 34,
+          "title": "Fixture gitlab ci build",
+          "url": "https://github.com/3cky/mbusd/pull/34",
+          "state": "closed",
+          "merged_at": "2018-06-19T15:31:45Z",
+          "head_sha": "ccf0beb800dc2532b27a6b217ab88a92a636c790"
+        },
+        {
+          "number": 32,
+          "title": "Gracefully handle incorrect Modbus/TCP length header",
+          "url": "https://github.com/3cky/mbusd/pull/32",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "8fa2d0351c9d4956e875147a3b1be5bd726a2477"
+        },
+        {
+          "number": 29,
+          "title": "Modbus RTU Exception Forwarding",
+          "url": "https://github.com/3cky/mbusd/pull/29",
+          "state": "closed",
+          "merged_at": "2018-03-26T10:12:44Z",
+          "head_sha": "460470a41501940c5a43394e19eb359a565c2940"
+        },
+        {
+          "number": 25,
+          "title": "Cmake gitlabci",
+          "url": "https://github.com/3cky/mbusd/pull/25",
+          "state": "closed",
+          "merged_at": "2018-03-05T14:19:52Z",
+          "head_sha": "da2082a134ba5c4b69918f22ac433b3099127de0"
+        },
+        {
+          "number": 23,
+          "title": "README: removed automake descr, added cmake options",
+          "url": "https://github.com/3cky/mbusd/pull/23",
+          "state": "closed",
+          "merged_at": "2017-12-01T14:04:39Z",
+          "head_sha": "d2864927bf7127f707ce32a551545f9f6f10aa52"
+        },
+        {
+          "number": 20,
+          "title": "Systemd support",
+          "url": "https://github.com/3cky/mbusd/pull/20",
+          "state": "closed",
+          "merged_at": "2017-11-23T09:37:35Z",
+          "head_sha": "81faaa5d48082f96b40c09954d66a8626789bd97"
+        },
+        {
+          "number": 13,
+          "title": "add file based RS-485 direction control",
+          "url": "https://github.com/3cky/mbusd/pull/13",
+          "state": "closed",
+          "merged_at": "2017-02-18T12:31:23Z",
+          "head_sha": "5c489b70d5e6e35fe64538ef2d31cfd65cdfd5a4"
+        },
+        {
+          "number": 9,
+          "title": "Fix illegal characters in comment header",
+          "url": "https://github.com/3cky/mbusd/pull/9",
+          "state": "closed",
+          "merged_at": "2016-11-25T13:56:00Z",
+          "head_sha": "52fcc6120f09e4e74b61e0c7851cc1b43f1e8b49"
+        },
+        {
+          "number": 5,
+          "title": "fixed a copy paste mistake",
+          "url": "https://github.com/3cky/mbusd/pull/5",
+          "state": "closed",
+          "merged_at": "2015-12-29T15:59:22Z",
+          "head_sha": "6976c2f3edacfe2b1dada688ba5c9692fdb1f240"
+        }
+      ]
+    },
+    {
+      "repository": "slowtec/tokio-modbus",
+      "scope": "latest 100",
+      "count": 100,
+      "pull_requests": [
+        {
+          "number": 387,
+          "title": "codec: widen the quantity check so it cannot overflow",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/387",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "cfc38970b70f37e6ab38e6bdb47d715b22bfa5f3"
+        },
+        {
+          "number": 384,
+          "title": "Bump actions/setup-python from 6 to 7",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/384",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "4131b530d4b8ca33505f4fa324ca739d7a716ed8"
+        },
+        {
+          "number": 383,
+          "title": "frame: derive Ord + Hash for Request",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/383",
+          "state": "closed",
+          "merged_at": "2026-07-03T00:23:44Z",
+          "head_sha": "90cc832d4a342c1819dba53e78d8466389aeef4d"
+        },
+        {
+          "number": 382,
+          "title": "ci: fix formatting",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/382",
+          "state": "closed",
+          "merged_at": "2026-07-03T00:37:38Z",
+          "head_sha": "d13a474c9551dcce5eb115f9a5148b6c0b79e102"
+        },
+        {
+          "number": 381,
+          "title": "Bump actions/checkout from 6 to 7",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/381",
+          "state": "closed",
+          "merged_at": "2026-07-03T00:41:08Z",
+          "head_sha": "ee4220131612daefababe836f1fffd59dbc2cab3"
+        },
+        {
+          "number": 378,
+          "title": "Add transport-level slave ID filtering to RTU server",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/378",
+          "state": "closed",
+          "merged_at": "2026-07-03T01:23:19Z",
+          "head_sha": "5bb0d4e8c6681e2ac83852da6793dc466d686cc8"
+        },
+        {
+          "number": 376,
+          "title": "add socket address parameter for the error callback function of tcp/rtu-over-tcp server",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/376",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "abe7dc086a17a29849b403228de133f2d20c8b42"
+        },
+        {
+          "number": 375,
+          "title": "fix(rtu) Remove any leading 0's from buffer during decode",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/375",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "80fd5998357e3577a0ea465540fd3d3ab47fb366"
+        },
+        {
+          "number": 373,
+          "title": "add socket address parameter for the error callback function of tcp/rtu-over-tcp server",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/373",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "abe7dc086a17a29849b403228de133f2d20c8b42"
+        },
+        {
+          "number": 372,
+          "title": "add socket address parameter for the error callback function of tcp/rtu-over-tcp server",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/372",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "9910bc911a82f9968864ac8e8408459aad82825f"
+        },
+        {
+          "number": 371,
+          "title": "[fix]add socket address parameter for the error callback function of tcp/r…",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/371",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "9910bc911a82f9968864ac8e8408459aad82825f"
+        },
+        {
+          "number": 368,
+          "title": "Implement RTU Broadcast",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/368",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "d8b173df1c5c54a1c0ae3eb647a49cfff8605633"
+        },
+        {
+          "number": 367,
+          "title": "Switch to Rust Edition 2024 & Rust 1.85",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/367",
+          "state": "closed",
+          "merged_at": "2026-03-11T02:37:35Z",
+          "head_sha": "d369c54f4ca3422718ce69f24ec36eeb4d825351"
+        },
+        {
+          "number": 366,
+          "title": "Implementation of some obscure missing functions",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/366",
+          "state": "closed",
+          "merged_at": "2026-03-11T02:12:36Z",
+          "head_sha": "c578fe34835b6bcdb83ed0975903eab16f3023d4"
+        },
+        {
+          "number": 365,
+          "title": "Update pre-commit plugins",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/365",
+          "state": "closed",
+          "merged_at": "2026-03-10T01:47:42Z",
+          "head_sha": "0c1d64f6a996bebc89b713b4769bf4e0a835bc38"
+        },
+        {
+          "number": 364,
+          "title": "Remove rustls-pemfile dev-dependency",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/364",
+          "state": "closed",
+          "merged_at": "2026-03-10T01:17:53Z",
+          "head_sha": "60936e34330583e59684abd77c00b113c96139e6"
+        },
+        {
+          "number": 363,
+          "title": "Update copyright headers to year 2026",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/363",
+          "state": "closed",
+          "merged_at": "2026-03-10T01:21:52Z",
+          "head_sha": "a48e95252382df7a75a5bd8efd656c0626de1043"
+        },
+        {
+          "number": 361,
+          "title": "fix(rtu): replace decode loop with rolling buffer scan",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/361",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "4251dd5769ee4a04b4aa02a8f33e80595d3f14ad"
+        },
+        {
+          "number": 360,
+          "title": "Use explicit error message instead of syscall for unexpected TCP connection drops",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/360",
+          "state": "closed",
+          "merged_at": "2026-06-23T23:18:50Z",
+          "head_sha": "0a8527bb747500f608c862284651c3b8a02e9441"
+        },
+        {
+          "number": 359,
+          "title": "Discard invalid TIDs and retry read",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/359",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "3c21060732f9fc335d0c3ed6895b2befdf23d44a"
+        },
+        {
+          "number": 358,
+          "title": "refactor(server): replace transpose with match for request error hand…",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/358",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "f2192fb162bf2cb6312c370e73bfe8aaa50a17a4"
+        },
+        {
+          "number": 357,
+          "title": "Bump actions/checkout from 5 to 6",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/357",
+          "state": "closed",
+          "merged_at": "2025-12-07T10:56:41Z",
+          "head_sha": "842a4079f885329386f62f70cca520bcc5b51640"
+        },
+        {
+          "number": 355,
+          "title": "Release v0.17.0",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/355",
+          "state": "closed",
+          "merged_at": "2025-10-22T09:02:27Z",
+          "head_sha": "5a0f4a3d0c770e8aabf5f32b8672220b6b606de8"
+        },
+        {
+          "number": 349,
+          "title": "Release v0.16.5",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/349",
+          "state": "closed",
+          "merged_at": "2025-10-05T09:15:33Z",
+          "head_sha": "a60f6434ba2e019c55fefc12ce46ea8f2d47c3c2"
+        },
+        {
+          "number": 348,
+          "title": "server: Remove unneeded `Unpin` trait bounds for abort signal",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/348",
+          "state": "closed",
+          "merged_at": "2025-10-04T14:45:30Z",
+          "head_sha": "a7e55458be9b5e6e4417d2c5e967f9574b90cbc2"
+        },
+        {
+          "number": 347,
+          "title": "Fix: Encoding of RTU CRC on Big Endian platforms",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/347",
+          "state": "closed",
+          "merged_at": "2025-10-05T09:09:05Z",
+          "head_sha": "b96f3ddd4370f02f77184a596534388c7d2f947e"
+        },
+        {
+          "number": 346,
+          "title": "codec: guess response pdu length for custom fns",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/346",
+          "state": "closed",
+          "merged_at": "2025-10-21T23:44:15Z",
+          "head_sha": "39dedc9e130ed6f48f7611a0498e639fe4ff7e8b"
+        },
+        {
+          "number": 344,
+          "title": "Fix CRC calculation issue",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/344",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "55987e62d951a67703c51b2f78531fcc1753c6b7"
+        },
+        {
+          "number": 343,
+          "title": "Release v0.16.4",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/343",
+          "state": "closed",
+          "merged_at": "2025-09-17T22:02:49Z",
+          "head_sha": "02f0a47ef1948ba27a796358e3f4a5953b672317"
+        },
+        {
+          "number": 342,
+          "title": "Release v0.16.3",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/342",
+          "state": "closed",
+          "merged_at": "2025-09-10T20:07:55Z",
+          "head_sha": "0c143afb21a7ef286b9163c6f3417cbc3693d392"
+        },
+        {
+          "number": 341,
+          "title": "Update minimum required version of tokio-util (#340)",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/341",
+          "state": "closed",
+          "merged_at": "2025-09-10T19:58:51Z",
+          "head_sha": "71b9034d95ebb2038372a7883ba006486274cdd9"
+        },
+        {
+          "number": 339,
+          "title": "Release v0.16.2",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/339",
+          "state": "closed",
+          "merged_at": "2025-09-09T22:18:12Z",
+          "head_sha": "c7001d7b1f245fa775452591b9ec8454780508c5"
+        },
+        {
+          "number": 338,
+          "title": "Bump actions/setup-python from 5 to 6",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/338",
+          "state": "closed",
+          "merged_at": "2025-09-08T23:22:39Z",
+          "head_sha": "501453142269c6dabaa853fa0c1a812d97486926"
+        },
+        {
+          "number": 336,
+          "title": "Disconnect client sockets when TCP/RTU over TCP server exits (#329)",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/336",
+          "state": "closed",
+          "merged_at": "2025-09-09T22:02:56Z",
+          "head_sha": "b61f09413375e8003737c7ae88a3d38b31126f0f"
+        },
+        {
+          "number": 335,
+          "title": "docs: fix some spelling mistakes",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/335",
+          "state": "closed",
+          "merged_at": "2025-09-06T08:22:28Z",
+          "head_sha": "1cce618de29e45831f616ae16678f4e62dd57b00"
+        },
+        {
+          "number": 334,
+          "title": "Properly Close the tasks for existing connections",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/334",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "60728532b57a074fca66ce1b9be4535348d1544d"
+        },
+        {
+          "number": 332,
+          "title": "perf(codec/rtu): replace cursor cast",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/332",
+          "state": "closed",
+          "merged_at": "2025-09-05T20:13:29Z",
+          "head_sha": "add84d24b4faac76138abb9efc29c6558c8cee08"
+        },
+        {
+          "number": 330,
+          "title": "Bump actions/checkout from 4 to 5",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/330",
+          "state": "closed",
+          "merged_at": "2025-08-12T07:17:57Z",
+          "head_sha": "8b0456fe06e5e9986eb07c5d14619721d25491f6"
+        },
+        {
+          "number": 328,
+          "title": "Add Read device identification (Issue #40)",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/328",
+          "state": "closed",
+          "merged_at": "2025-09-16T23:47:57Z",
+          "head_sha": "80e9e6a91243198ec66d8b175d83b0f1ef8a387c"
+        },
+        {
+          "number": 327,
+          "title": "ci: fix formatting failing precommit",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/327",
+          "state": "closed",
+          "merged_at": "2025-07-25T22:51:39Z",
+          "head_sha": "b71c28b817e73171cfd78cdf80883bbf7f1d5e54"
+        },
+        {
+          "number": 326,
+          "title": "deps: update socket2 to 0.6.0",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/326",
+          "state": "closed",
+          "merged_at": "2025-07-25T23:17:07Z",
+          "head_sha": "70782451e36ef1dbe0c2af183880c6a572a67891"
+        },
+        {
+          "number": 322,
+          "title": "chore: Add comment about CRC calculation vs. endianess",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/322",
+          "state": "closed",
+          "merged_at": "2025-04-22T10:59:20Z",
+          "head_sha": "b29e8e0a78eefd78f15969234f98e6c8df3ac407"
+        },
+        {
+          "number": 321,
+          "title": "Fix clippy warnings and update pre-commit plugin",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/321",
+          "state": "closed",
+          "merged_at": "2025-04-22T10:53:03Z",
+          "head_sha": "04d3b548646aa32ac1689c60af45e4629f1eabcc"
+        },
+        {
+          "number": 318,
+          "title": "Update copyright headers to year 2025",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/318",
+          "state": "closed",
+          "merged_at": "2025-03-15T17:43:15Z",
+          "head_sha": "c8ab5c39cefd5afa14e08830db6e2e030967ad33"
+        },
+        {
+          "number": 317,
+          "title": "Fix CI and build issues",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/317",
+          "state": "closed",
+          "merged_at": "2025-03-14T13:33:30Z",
+          "head_sha": "0fdb7bea85fd5034ca37cae0e70bc6a8a42fa90b"
+        },
+        {
+          "number": 316,
+          "title": "Remove unnecessary Debug trait requirement",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/316",
+          "state": "closed",
+          "merged_at": "2025-08-21T07:19:43Z",
+          "head_sha": "97be4eeb5d3d7ca8cc2371439906edc3bcb93a6d"
+        },
+        {
+          "number": 314,
+          "title": "Relaxing TCP header verification for devices who don't obey header specs",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/314",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "cecd28875a43e9ee86739fc38642a7807529a43d"
+        },
+        {
+          "number": 308,
+          "title": "Release v0.16.1",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/308",
+          "state": "closed",
+          "merged_at": "2024-12-13T11:57:55Z",
+          "head_sha": "93df6154ad057c397f5ff4670a92a52e4b160d8c"
+        },
+        {
+          "number": 307,
+          "title": "Disable max. PDU size checks for custom functions",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/307",
+          "state": "closed",
+          "merged_at": "2024-12-12T22:05:57Z",
+          "head_sha": "49a4c8bb3167f523026b4ae48a06ed3e4ff0a661"
+        },
+        {
+          "number": 305,
+          "title": "Release v0.16.0",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/305",
+          "state": "closed",
+          "merged_at": "2024-12-04T13:18:05Z",
+          "head_sha": "a7135403583ad0a65a214cf07eee28adc8115c5f"
+        },
+        {
+          "number": 304,
+          "title": "rtu: Fix unbounded memory allocations by wrong reserve() usage",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/304",
+          "state": "closed",
+          "merged_at": "2024-12-01T09:39:38Z",
+          "head_sha": "2d22e239cc14db530c78ebe9e51e5415df299ba6"
+        },
+        {
+          "number": 303,
+          "title": "Fix pre-commit issues",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/303",
+          "state": "closed",
+          "merged_at": "2024-11-29T18:17:29Z",
+          "head_sha": "1fe5a698d2f0b558c8649c4834dcfeb47e38028c"
+        },
+        {
+          "number": 302,
+          "title": "fix: memory leak in tcp client writing holding register",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/302",
+          "state": "closed",
+          "merged_at": "2024-11-29T12:22:24Z",
+          "head_sha": "e238ae16966b52e7cd9747dfa3d9f1c0d1eb6521"
+        },
+        {
+          "number": 300,
+          "title": "dependencies: Update thiserror to v2.0",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/300",
+          "state": "closed",
+          "merged_at": "2024-11-24T11:59:19Z",
+          "head_sha": "f378e8b60b146f1e662dc576e799e59ba64b51f3"
+        },
+        {
+          "number": 299,
+          "title": "Update pre-commit hooks",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/299",
+          "state": "closed",
+          "merged_at": "2024-11-24T11:37:56Z",
+          "head_sha": "76ae7ad48393c9c19cef4e1296ee7054ee552f28"
+        },
+        {
+          "number": 296,
+          "title": "Add taplo config and pre-commit hook",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/296",
+          "state": "closed",
+          "merged_at": "2024-11-01T21:29:41Z",
+          "head_sha": "f3a7e186d38ad7f4209e593ddcf7d6d0972dcc5e"
+        },
+        {
+          "number": 295,
+          "title": "rtu-server: Add instructions to example to make it work",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/295",
+          "state": "closed",
+          "merged_at": "2024-10-17T12:17:35Z",
+          "head_sha": "d38e990f2587cac3bfdce13ae57fa1c7bc0de6ab"
+        },
+        {
+          "number": 294,
+          "title": "server: Add more logs to process() loop",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/294",
+          "state": "closed",
+          "merged_at": "2024-10-17T12:19:03Z",
+          "head_sha": "97fb192e4dd7809ef7769b416a9330405fc168e9"
+        },
+        {
+          "number": 292,
+          "title": "Encode request/response into buffer to avoid temporary allocations",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/292",
+          "state": "closed",
+          "merged_at": "2024-10-17T21:20:10Z",
+          "head_sha": "5adf1e16d028bea75b564aa9747e8546241e9646"
+        },
+        {
+          "number": 291,
+          "title": "Reduce redundant code in disconnect()",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/291",
+          "state": "closed",
+          "merged_at": "2024-10-13T11:50:22Z",
+          "head_sha": "263b200164cd09527502ecc2fe2b0acec7e4d41a"
+        },
+        {
+          "number": 290,
+          "title": "Restrict server features in codec",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/290",
+          "state": "closed",
+          "merged_at": "2024-10-13T11:44:21Z",
+          "head_sha": "1e933568127a7df5954f1b27a55697d54488c35c"
+        },
+        {
+          "number": 289,
+          "title": "rtu: Send request and receive response one after another",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/289",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "93b4e100f8d8da4f1e35b113b74f136dd1333c36"
+        },
+        {
+          "number": 288,
+          "title": "Release v0.15.0",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/288",
+          "state": "closed",
+          "merged_at": "2024-10-10T14:10:51Z",
+          "head_sha": "62bf1fa541217eb97dda5d0d10d9288738fa8bf8"
+        },
+        {
+          "number": 287,
+          "title": "Add masked_write_register() function to sync client",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/287",
+          "state": "closed",
+          "merged_at": "2024-09-29T21:29:26Z",
+          "head_sha": "c9392ca1c02ac094007207e59d929bfa512a2c12"
+        },
+        {
+          "number": 286,
+          "title": "Remove internal unused trait impls",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/286",
+          "state": "closed",
+          "merged_at": "2024-09-24T22:47:03Z",
+          "head_sha": "44209ee863c48668dae22e5e9e9186e0455ac636"
+        },
+        {
+          "number": 285,
+          "title": "tcp client: Use non-atomic type for internal transaction id",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/285",
+          "state": "closed",
+          "merged_at": "2024-09-24T22:49:24Z",
+          "head_sha": "c41514fb2c6ff91ccc907354cb31e64de6d28b62"
+        },
+        {
+          "number": 284,
+          "title": "Add all function codes defined in the protocol specification",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/284",
+          "state": "closed",
+          "merged_at": "2024-09-14T14:59:21Z",
+          "head_sha": "16169ee7f0f01c670524674f3bb68b04f20aebd2"
+        },
+        {
+          "number": 283,
+          "title": "Update changelog after yanking v0.14.1",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/283",
+          "state": "closed",
+          "merged_at": "2024-09-14T09:00:35Z",
+          "head_sha": "ecb998d74aef6d17dcaa1188a1e24f1581376a2b"
+        },
+        {
+          "number": 281,
+          "title": "feat: rename Exception to ExceptionCode",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/281",
+          "state": "closed",
+          "merged_at": "2024-09-12T11:03:48Z",
+          "head_sha": "fda6f651e39c392b2fab3e0e15d6e2e502e797a4"
+        },
+        {
+          "number": 280,
+          "title": "Update changelog",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/280",
+          "state": "closed",
+          "merged_at": "2024-09-12T01:11:50Z",
+          "head_sha": "bdfdc5872e59cccc4db20813c3fd04825fc07e00"
+        },
+        {
+          "number": 279,
+          "title": "feat: Add support for custom exception codes",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/279",
+          "state": "closed",
+          "merged_at": "2024-09-11T17:53:47Z",
+          "head_sha": "7d074571f6c6bccb820ccc741183356b82abd821"
+        },
+        {
+          "number": 277,
+          "title": "Exclude unused server code",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/277",
+          "state": "closed",
+          "merged_at": "2024-09-10T11:37:15Z",
+          "head_sha": "fc69ef086eb143fcb1c01b26e326d53c534f52fa"
+        },
+        {
+          "number": 276,
+          "title": "Release v0.14.1",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/276",
+          "state": "closed",
+          "merged_at": "2024-09-10T11:47:32Z",
+          "head_sha": "4d27864795fa0858593c2caa641605487380ee4b"
+        },
+        {
+          "number": 275,
+          "title": "Update pre-commit hooks and fix clippy lints",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/275",
+          "state": "closed",
+          "merged_at": "2024-09-09T19:42:02Z",
+          "head_sha": "ab2b04295b3c7e528e3dadfc3490c2d5022a05e8"
+        },
+        {
+          "number": 274,
+          "title": "Implement `Report Server ID` (function code 17)",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/274",
+          "state": "closed",
+          "merged_at": "2024-09-10T09:53:13Z",
+          "head_sha": "cf1f530c779379758eb83bd77698bc03881718a4"
+        },
+        {
+          "number": 273,
+          "title": "Remove obsolete FunctionCode::Disconnect",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/273",
+          "state": "closed",
+          "merged_at": "2024-09-18T15:31:02Z",
+          "head_sha": "ec5b039937c9384a1af2013b59d5e9587f6e7c99"
+        },
+        {
+          "number": 271,
+          "title": "Bump EmbarkStudios/cargo-deny-action from 1 to 2",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/271",
+          "state": "closed",
+          "merged_at": "2024-08-05T17:42:55Z",
+          "head_sha": "bb57193a7c9e5c7104ed514559ba9269eb874868"
+        },
+        {
+          "number": 269,
+          "title": "Update dev-dependencies",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/269",
+          "state": "closed",
+          "merged_at": "2024-07-29T20:39:05Z",
+          "head_sha": "537414286ad6246492f138d77bd79ac33624db8a"
+        },
+        {
+          "number": 268,
+          "title": "Release v0.14.0",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/268",
+          "state": "closed",
+          "merged_at": "2024-07-21T15:13:43Z",
+          "head_sha": "c3db6f5965c63f0f19059a8a9e279e56a9ecf2a9"
+        },
+        {
+          "number": 267,
+          "title": "Fix rtu-server-address example",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/267",
+          "state": "closed",
+          "merged_at": "2024-07-21T13:08:39Z",
+          "head_sha": "18517c2aac815649f3e84fb6b421accc393405c3"
+        },
+        {
+          "number": 266,
+          "title": "server: Add bounds and docs for associated types of Service trait",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/266",
+          "state": "closed",
+          "merged_at": "2024-07-21T13:11:44Z",
+          "head_sha": "bf2be3665ca6059f215c026b8547aa810d2bae73"
+        },
+        {
+          "number": 265,
+          "title": "server: Add associated types Response and Exception to Service trait",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/265",
+          "state": "closed",
+          "merged_at": "2024-07-21T00:36:29Z",
+          "head_sha": "51bb1870e0245f0055375db3d27c5d56e8a842df"
+        },
+        {
+          "number": 262,
+          "title": "Release v0.13.1",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/262",
+          "state": "closed",
+          "merged_at": "2024-06-24T23:05:14Z",
+          "head_sha": "18a50a1d9c789a71cd61e20fa4cd2453dfbc4cce"
+        },
+        {
+          "number": 261,
+          "title": "Fix panic on disconnect()",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/261",
+          "state": "closed",
+          "merged_at": "2024-06-24T22:41:26Z",
+          "head_sha": "af200112ff1358171033ee10de682194fb335d21"
+        },
+        {
+          "number": 259,
+          "title": "Release v0.13.0",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/259",
+          "state": "closed",
+          "merged_at": "2024-06-24T09:18:56Z",
+          "head_sha": "49ccebcdeb4cfe88dbae721eee06aaa1de12533f"
+        },
+        {
+          "number": 258,
+          "title": "Update pre-commit hooks",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/258",
+          "state": "closed",
+          "merged_at": "2024-04-23T20:34:57Z",
+          "head_sha": "c5f5fe4bdd9e1bf3a658c4ec53eab559c13aab75"
+        },
+        {
+          "number": 255,
+          "title": "Simplify naming of ProtocolError variants",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/255",
+          "state": "closed",
+          "merged_at": "2024-03-27T11:12:54Z",
+          "head_sha": "4374c904dda08dec73632588ff0c714cc2a8caf4"
+        },
+        {
+          "number": 254,
+          "title": "Fix panic on mismatching request/response function codes",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/254",
+          "state": "closed",
+          "merged_at": "2024-03-27T00:42:38Z",
+          "head_sha": "b00d385ca3ad42b2e06194a9965f7891db56031d"
+        },
+        {
+          "number": 253,
+          "title": "Upgrade rustls-pemfile and tokio-rustls",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/253",
+          "state": "closed",
+          "merged_at": "2024-03-27T09:12:57Z",
+          "head_sha": "78c90bb301960dce802847c0c36622e39e46962c"
+        },
+        {
+          "number": 251,
+          "title": "Release v0.12.0",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/251",
+          "state": "closed",
+          "merged_at": "2024-03-21T16:07:36Z",
+          "head_sha": "ae401a28519a8daebc4cac1ab723913731b0ebc7"
+        },
+        {
+          "number": 250,
+          "title": "Update pre-commit config and hooks",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/250",
+          "state": "closed",
+          "merged_at": "2024-03-02T16:22:00Z",
+          "head_sha": "303aaa9348cb9a81b46eff57bb93e3421ca5fda7"
+        },
+        {
+          "number": 249,
+          "title": "Bump pre-commit/action from 3.0.0 to 3.0.1",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/249",
+          "state": "closed",
+          "merged_at": "2024-02-13T22:01:16Z",
+          "head_sha": "e1f82aba1291aa76c517344626ba70f9afe8a90b"
+        },
+        {
+          "number": 248,
+          "title": "refacto: new `Client` API",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/248",
+          "state": "closed",
+          "merged_at": "2024-03-15T09:49:10Z",
+          "head_sha": "fcc1510795803e3afad5506e0ca6bac1aefa4404"
+        },
+        {
+          "number": 247,
+          "title": "Release v0.11.0",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/247",
+          "state": "closed",
+          "merged_at": "2024-01-30T13:26:55Z",
+          "head_sha": "90187a909635062f845941154619c60e54ce04f7"
+        },
+        {
+          "number": 246,
+          "title": "feat: add `Exception` type to public api",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/246",
+          "state": "closed",
+          "merged_at": "2024-01-21T19:54:42Z",
+          "head_sha": "f94fc98545f366f01c9d69c430953110fe279167"
+        },
+        {
+          "number": 245,
+          "title": "server: Add DynamicService trait and adapter",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/245",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "f9bfaf6e5ca221326c0c833d02073c4c7c5e1f42"
+        },
+        {
+          "number": 244,
+          "title": "server: Remove unused trait bounds from `Service::call()` future result",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/244",
+          "state": "closed",
+          "merged_at": "2024-01-15T15:32:42Z",
+          "head_sha": "5c3fdff981153d671f3199feb1f29edd6696b60e"
+        },
+        {
+          "number": 243,
+          "title": "Fix and amend README",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/243",
+          "state": "closed",
+          "merged_at": "2024-01-03T19:45:27Z",
+          "head_sha": "bfaadb5fd6c362cbe35a94e6daefc658e7b221f5"
+        },
+        {
+          "number": 242,
+          "title": "Release v0.10.0",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/242",
+          "state": "closed",
+          "merged_at": "2024-01-03T18:50:53Z",
+          "head_sha": "5c4a4c281a343d465b83065cf173a4bf5b20dc09"
+        },
+        {
+          "number": 240,
+          "title": "Split futures dependency into futures-core and futures-util",
+          "url": "https://github.com/slowtec/tokio-modbus/pull/240",
+          "state": "closed",
+          "merged_at": "2024-01-03T17:37:09Z",
+          "head_sha": "9abcc48fa7410c7f08741701c26cdfbdf8d75827"
+        }
+      ]
+    },
+    {
+      "repository": "stephane/libmodbus",
+      "scope": "latest 100",
+      "count": 100,
+      "pull_requests": [
+        {
+          "number": 887,
+          "title": "Reject oversized byte counts in Write Multiple Coils requests",
+          "url": "https://github.com/stephane/libmodbus/pull/887",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "ca7e0e776e73e4f2bb16a5432d8b28f18a4d8d22"
+        },
+        {
+          "number": 886,
+          "title": "ci: build on macOS and Windows",
+          "url": "https://github.com/stephane/libmodbus/pull/886",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "edcb5ac6c981c715f8ed59b26111455c33e9c3ab"
+        },
+        {
+          "number": 885,
+          "title": "Add experimental Meson build system",
+          "url": "https://github.com/stephane/libmodbus/pull/885",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "4778961caef34e187d76441ac6beed184cb83451"
+        },
+        {
+          "number": 884,
+          "title": "Sync with upstream",
+          "url": "https://github.com/stephane/libmodbus/pull/884",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "2f01052166200db14298489ef0a4a1246c74ebc6"
+        },
+        {
+          "number": 882,
+          "title": "_modbus_receive_msg: use a deadline for the receive timeout",
+          "url": "https://github.com/stephane/libmodbus/pull/882",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "ac3ba84e4b96ca49065653f0261369299a97a6c8"
+        },
+        {
+          "number": 881,
+          "title": "Frame Modbus TCP messages by their MBAP length",
+          "url": "https://github.com/stephane/libmodbus/pull/881",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "21cecc7f65ea1b8c2be72249fee275faa71bbaf4"
+        },
+        {
+          "number": 879,
+          "title": "modbus: export the libmodbus_version_* variables from the DLL",
+          "url": "https://github.com/stephane/libmodbus/pull/879",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "53fef718971dc4d9fabea8939e56ed7556269c48"
+        },
+        {
+          "number": 878,
+          "title": "modbus-rtu: accept a configurable set of slave ids",
+          "url": "https://github.com/stephane/libmodbus/pull/878",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "9d5d17fc7cfd5c8f50d36d52c142f555382832aa"
+        },
+        {
+          "number": 877,
+          "title": "modbus: add modbus_reply_router for per-slave dispatch",
+          "url": "https://github.com/stephane/libmodbus/pull/877",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "2703c0dc491dfb9d994e7262b09ff173ad064bd5"
+        },
+        {
+          "number": 876,
+          "title": "modbus: add modbus_proxy_router for multi-backend gateways",
+          "url": "https://github.com/stephane/libmodbus/pull/876",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "8fe4f924d4c96da6080a506ec776fdbedfe6eacc"
+        },
+        {
+          "number": 875,
+          "title": "modbus: add pluggable I/O transport",
+          "url": "https://github.com/stephane/libmodbus/pull/875",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "771dc099a2ff144d23ea96df2406595e5366837d"
+        },
+        {
+          "number": 873,
+          "title": "Fix exception function code wraparound when function >= 0x80",
+          "url": "https://github.com/stephane/libmodbus/pull/873",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "066c142164a70b7179ef1bdec7a6242950469c97"
+        },
+        {
+          "number": 871,
+          "title": "modbus-tcp: check if response slave id matches request slave id",
+          "url": "https://github.com/stephane/libmodbus/pull/871",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "a39e2d17ad9824dc69f678fb0e652467655ad7a0"
+        },
+        {
+          "number": 870,
+          "title": "Fix validation of FC22 echoed confirmation fields",
+          "url": "https://github.com/stephane/libmodbus/pull/870",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "cb728a44b76e570a6111cad26a40c3524bd5fe9d"
+        },
+        {
+          "number": 869,
+          "title": "modbus_reply_exception: validate function code",
+          "url": "https://github.com/stephane/libmodbus/pull/869",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "a191eabef39b556c9aefc376516c3f524d7dc233"
+        },
+        {
+          "number": 866,
+          "title": "Don't apply the FD_SETSIZE check to Windows sockets",
+          "url": "https://github.com/stephane/libmodbus/pull/866",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "24f6be6cfc22a5a21079f11bb3faa8357639f731"
+        },
+        {
+          "number": 865,
+          "title": "update",
+          "url": "https://github.com/stephane/libmodbus/pull/865",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "a9b025d12289855490b10d77461c99e001abfc0f"
+        },
+        {
+          "number": 862,
+          "title": "modbus: limit link error-recovery sleep+flush to confirmations",
+          "url": "https://github.com/stephane/libmodbus/pull/862",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "34f7ff58ee2afc197751019305abdc8c83d80a6b"
+        },
+        {
+          "number": 860,
+          "title": "fix: keep waiting after unexpected RTU slave response",
+          "url": "https://github.com/stephane/libmodbus/pull/860",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "ef5baa88fd53905fcc6e7fee135c0719555d7c1f"
+        },
+        {
+          "number": 854,
+          "title": "fixed rtu message recevie in Windows Platform",
+          "url": "https://github.com/stephane/libmodbus/pull/854",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "7652e26a524c475bd45aed58f2b6330548ea16d0"
+        },
+        {
+          "number": 853,
+          "title": "Fix freeaddrinfo(NULL) in _modbus_tcp_pi_connect",
+          "url": "https://github.com/stephane/libmodbus/pull/853",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "4141787fb1b4fc7d15322a69e68897ecd61ec2e4"
+        },
+        {
+          "number": 851,
+          "title": "Fix typo: duplicate \"use\" in docs/index.md",
+          "url": "https://github.com/stephane/libmodbus/pull/851",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "804d53f17496d81185273e14d352942b7378f446"
+        },
+        {
+          "number": 850,
+          "title": "[TCP] Apply IPv4 socket options to accepted sockets in modbus_tcp_accept",
+          "url": "https://github.com/stephane/libmodbus/pull/850",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "f34484ceecc2cbefec3a40a1feca8ea8706e7d93"
+        },
+        {
+          "number": 847,
+          "title": "Fix ssize_t int redefinition error on Windows",
+          "url": "https://github.com/stephane/libmodbus/pull/847",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "fc4497c29e9ef50dd2f54ccd4ff27e3a02060cf3"
+        },
+        {
+          "number": 839,
+          "title": "Fix Out-of-Bounds Read issue in modbus_reply",
+          "url": "https://github.com/stephane/libmodbus/pull/839",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "91d5b5597cfabe9f5c68025ad76a9cd861f9730d"
+        },
+        {
+          "number": 836,
+          "title": "Respect user-provided CFLAGS",
+          "url": "https://github.com/stephane/libmodbus/pull/836",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "d12ffdaa161f217ffd21a4b405d6033e7d80b840"
+        },
+        {
+          "number": 835,
+          "title": "(RFC-compliance: Issue834) Fix the Violation of the requirement of Unit Identifier.",
+          "url": "https://github.com/stephane/libmodbus/pull/835",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "a94f6aa25ffa074fa88752a1953f1badd63c2afe"
+        },
+        {
+          "number": 833,
+          "title": "(RFC-compliance: Issue813) A violation regarding the specifications for the Read Exception Status.",
+          "url": "https://github.com/stephane/libmodbus/pull/833",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "0103fbfab264a220d67dd0aaeac84d708b5df9a9"
+        },
+        {
+          "number": 831,
+          "title": "Prevent segfault in TCP connect when using MUSL ",
+          "url": "https://github.com/stephane/libmodbus/pull/831",
+          "state": "closed",
+          "merged_at": "2026-02-13T18:27:58Z",
+          "head_sha": "abcb12c998cb2c93d2bbfed39405e228c34449fe"
+        },
+        {
+          "number": 820,
+          "title": "Add modbus_get_errno function for DLL",
+          "url": "https://github.com/stephane/libmodbus/pull/820",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "21c3e0047323b651aae9a849fd89e02e97cdaa3e"
+        },
+        {
+          "number": 819,
+          "title": "Adds API to suppress echo",
+          "url": "https://github.com/stephane/libmodbus/pull/819",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "41d51bb8966b13ad6225b32605465ad4677ef4ae"
+        },
+        {
+          "number": 818,
+          "title": "Adds API to suppress echo",
+          "url": "https://github.com/stephane/libmodbus/pull/818",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "269abf268b711de4c47d668036de085656d8206b"
+        },
+        {
+          "number": 817,
+          "title": "Resync rtu_usb branch from upstream as of 2024-10-22",
+          "url": "https://github.com/stephane/libmodbus/pull/817",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "4dd605bf2192d43827e0ceeb8879e661ee8a62a3"
+        },
+        {
+          "number": 800,
+          "title": "WIN32 compatibility for setsockopt() in modbus-tcp.c",
+          "url": "https://github.com/stephane/libmodbus/pull/800",
+          "state": "closed",
+          "merged_at": "2026-02-13T18:29:59Z",
+          "head_sha": "996fae3ac9dfa718244dac6eb0597d26c037c0a9"
+        },
+        {
+          "number": 794,
+          "title": "Fix tests reporting (upstream)",
+          "url": "https://github.com/stephane/libmodbus/pull/794",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "c845912beaf1b7bf3a80a0f9720447ccd38acef8"
+        },
+        {
+          "number": 793,
+          "title": "Fix portable build of libmodbus (upstream)",
+          "url": "https://github.com/stephane/libmodbus/pull/793",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "331d1a6f007d2a04eb1bcde6c029822993c4b238"
+        },
+        {
+          "number": 792,
+          "title": "Fixes test suite (unit-test-client): copy&paste bug, ctx instead of invalid_ctx (closes #791)",
+          "url": "https://github.com/stephane/libmodbus/pull/792",
+          "state": "closed",
+          "merged_at": "2026-02-13T18:31:19Z",
+          "head_sha": "0c6b74e9a607cfb3e543a2a0bb2d486b7129385e"
+        },
+        {
+          "number": 789,
+          "title": "Bump `rtu_usb` branch to libmodbus v3.1.11",
+          "url": "https://github.com/stephane/libmodbus/pull/789",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "4ab8d48860b0395c1f6ae8d43973301768a02beb"
+        },
+        {
+          "number": 787,
+          "title": "New API functions to access constructed response frame #786",
+          "url": "https://github.com/stephane/libmodbus/pull/787",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "7bb760e83bffeae02cab97406ca4a6a600c2ee63"
+        },
+        {
+          "number": 783,
+          "title": "fix exception message",
+          "url": "https://github.com/stephane/libmodbus/pull/783",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "580c18eaaff09fd4001bbe2a0bb08920f0bd426d"
+        },
+        {
+          "number": 780,
+          "title": "Update unit-test.h.in",
+          "url": "https://github.com/stephane/libmodbus/pull/780",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "ff1f5b466f25b4fea4c6802ff5a689aed303b807"
+        },
+        {
+          "number": 778,
+          "title": "updating the integration for the newer api",
+          "url": "https://github.com/stephane/libmodbus/pull/778",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "70344c231d855c498e7c8315dc09fc34b0fa0441"
+        },
+        {
+          "number": 771,
+          "title": "modbus default port is 502",
+          "url": "https://github.com/stephane/libmodbus/pull/771",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "f1e2fe6c891cb4dd079f7f947ce45e16644dfe66"
+        },
+        {
+          "number": 770,
+          "title": "Fix float32 encoding/decoding (#665, #694, #757)",
+          "url": "https://github.com/stephane/libmodbus/pull/770",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "5a8247ed7cbad5c2bc2afd104f93e422df53f2e2"
+        },
+        {
+          "number": 766,
+          "title": "Add ESP_PLATFORM support for UART driver selection",
+          "url": "https://github.com/stephane/libmodbus/pull/766",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "0bac148e0a8a87e2336faa4d5681f354bb9590cf"
+        },
+        {
+          "number": 765,
+          "title": "HAVE_NETINET_IN_H as guard around header",
+          "url": "https://github.com/stephane/libmodbus/pull/765",
+          "state": "closed",
+          "merged_at": "2024-10-21T17:18:15Z",
+          "head_sha": "827c2644ad54c9554ed8113452d703b5c1c46f09"
+        },
+        {
+          "number": 761,
+          "title": "Add termios2 support",
+          "url": "https://github.com/stephane/libmodbus/pull/761",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "52abfc14fcf8a66828bfdbea847643caedc10e03"
+        },
+        {
+          "number": 760,
+          "title": "modbus-rtu: don't use O_EXCL when opening the device",
+          "url": "https://github.com/stephane/libmodbus/pull/760",
+          "state": "closed",
+          "merged_at": "2026-02-13T18:33:26Z",
+          "head_sha": "d55aba810672dcb6c52215c93eb71427e80c6a0f"
+        },
+        {
+          "number": 758,
+          "title": "Document macros for error codes corresponding to Modbus exceptions",
+          "url": "https://github.com/stephane/libmodbus/pull/758",
+          "state": "closed",
+          "merged_at": "2024-10-22T12:11:42Z",
+          "head_sha": "d30187ffd73d2fc2065ef14ba6a78e60989f28f8"
+        },
+        {
+          "number": 755,
+          "title": "Add if (ctx->debug) condition with log",
+          "url": "https://github.com/stephane/libmodbus/pull/755",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "d5ad3341aaf136cc37cda1309bb09d6a1eea8350"
+        },
+        {
+          "number": 746,
+          "title": "feat:Add debug log output to caller interface",
+          "url": "https://github.com/stephane/libmodbus/pull/746",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "2815aba7dae9c2b552dc6e96c52d8065387864e7"
+        },
+        {
+          "number": 745,
+          "title": "ESP-IDF support",
+          "url": "https://github.com/stephane/libmodbus/pull/745",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "ef8e7f828728355a1166af4bfb2b8a6bf262153f"
+        },
+        {
+          "number": 741,
+          "title": "Small compatibility improvements for esp32 embedded platforms",
+          "url": "https://github.com/stephane/libmodbus/pull/741",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "f2a619dfef5d032b886c7cf7b9f47c4f2c90e86a"
+        },
+        {
+          "number": 739,
+          "title": "Build libmodbus with CMake",
+          "url": "https://github.com/stephane/libmodbus/pull/739",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "70e6f725400a29e262e5c3782355f6af55184702"
+        },
+        {
+          "number": 737,
+          "title": "Set `errno` to `ETIMEDOUT` on TCP connect timeout",
+          "url": "https://github.com/stephane/libmodbus/pull/737",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "830545ae4890bd9e042872f9d9285b631dbb1e20"
+        },
+        {
+          "number": 725,
+          "title": "modbus_strerror_r() introduced to avoid MT-Unsafe functions  (#468)",
+          "url": "https://github.com/stephane/libmodbus/pull/725",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "bebc72e2cd283749169bcc1a7ec1d7877f4ea38f"
+        },
+        {
+          "number": 719,
+          "title": "rename modbus-version.h.ln to modbus-version.h",
+          "url": "https://github.com/stephane/libmodbus/pull/719",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "ba6478a33d2f7d3ef8fe3cc329b7dacd3f7f3773"
+        },
+        {
+          "number": 707,
+          "title": "Updated to build with VS 2022",
+          "url": "https://github.com/stephane/libmodbus/pull/707",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "84e7b09ac7e3baabdd30043997314d29aa51ca26"
+        },
+        {
+          "number": 705,
+          "title": "use poll() instead of select() when possible",
+          "url": "https://github.com/stephane/libmodbus/pull/705",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "adad2669d024945c63cba0ac1a75cc2c86fd46e7"
+        },
+        {
+          "number": 702,
+          "title": "#675 fix wrong generated version for double number",
+          "url": "https://github.com/stephane/libmodbus/pull/702",
+          "state": "closed",
+          "merged_at": "2024-07-16T09:27:34Z",
+          "head_sha": "00ce98682e2badba16ef589b6198575294b2888b"
+        },
+        {
+          "number": 697,
+          "title": "More detailed description for building on Windows",
+          "url": "https://github.com/stephane/libmodbus/pull/697",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "89638cd918f80d0f5bcf2d8b0bbf2e518018a87d"
+        },
+        {
+          "number": 696,
+          "title": "updating Readme with more description to create dll",
+          "url": "https://github.com/stephane/libmodbus/pull/696",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "f57c0ee618bdc3794a370ee264a8aea1bc550541"
+        },
+        {
+          "number": 694,
+          "title": "Fixes float encoding/decoding for both big and little endian (fixes #665).",
+          "url": "https://github.com/stephane/libmodbus/pull/694",
+          "state": "closed",
+          "merged_at": "2024-07-17T11:08:16Z",
+          "head_sha": "73d5a05990d80850481ed03c8d728d1e92838518"
+        },
+        {
+          "number": 690,
+          "title": "Log facilities",
+          "url": "https://github.com/stephane/libmodbus/pull/690",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "b9c26e98b409b5943482e71a4a15425b92f64240"
+        },
+        {
+          "number": 684,
+          "title": "Only load each wide integer once in MODBUS_SET_INT*_TO_INT*() macros",
+          "url": "https://github.com/stephane/libmodbus/pull/684",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "6ee7b3f19f23d70cec7ce236e931dc396ca06d6b"
+        },
+        {
+          "number": 682,
+          "title": "Setting transaction id in modbus_send_raw_request",
+          "url": "https://github.com/stephane/libmodbus/pull/682",
+          "state": "closed",
+          "merged_at": "2024-07-16T09:30:47Z",
+          "head_sha": "6c5346117b4422571d79bda55ecb876dd153b35d"
+        },
+        {
+          "number": 681,
+          "title": "Send raw request, adding tid parameter",
+          "url": "https://github.com/stephane/libmodbus/pull/681",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "cd5b7a824fb6449d432f64aacbb735fd49b471db"
+        },
+        {
+          "number": 672,
+          "title": "Add quirks flag MODBUS_QUIRK_IGNORE_RTU_SLAVE_CHECK.",
+          "url": "https://github.com/stephane/libmodbus/pull/672",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "182b019d0505dd6bf636bab2b73d9c1caa46fb93"
+        },
+        {
+          "number": 671,
+          "title": "fix modbus quirks function definition",
+          "url": "https://github.com/stephane/libmodbus/pull/671",
+          "state": "closed",
+          "merged_at": "2022-12-03T16:07:53Z",
+          "head_sha": "5cbbb85cb206c710ba7a62c361a8d8d0cbbbdc33"
+        },
+        {
+          "number": 669,
+          "title": "Add CIFuzz Github action",
+          "url": "https://github.com/stephane/libmodbus/pull/669",
+          "state": "closed",
+          "merged_at": "2022-11-28T00:57:35Z",
+          "head_sha": "3ad102f4c576ef86ad8be27cfd018a4bc8a19333"
+        },
+        {
+          "number": 667,
+          "title": "adding get_query_function",
+          "url": "https://github.com/stephane/libmodbus/pull/667",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "300751caf1845cb3a4d8f622b12e5f346fe5b244"
+        },
+        {
+          "number": 666,
+          "title": "Meson support",
+          "url": "https://github.com/stephane/libmodbus/pull/666",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "d991c250d01c7120c796b6eda58a147fd9397736"
+        },
+        {
+          "number": 663,
+          "title": "Visual Studio 2022",
+          "url": "https://github.com/stephane/libmodbus/pull/663",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "4330a1a9d462ef4830cbf2fca9e89af9e6e07d04"
+        },
+        {
+          "number": 662,
+          "title": "fix connection not established error on windows",
+          "url": "https://github.com/stephane/libmodbus/pull/662",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "3ae34ce39128d12bb090039f780dcbf335c10969"
+        },
+        {
+          "number": 658,
+          "title": "Oss fuzz files",
+          "url": "https://github.com/stephane/libmodbus/pull/658",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "5dbb49a3f46e3af5b632487862a16f1b63122955"
+        },
+        {
+          "number": 657,
+          "title": "Create testworkflow",
+          "url": "https://github.com/stephane/libmodbus/pull/657",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "9b896fc116d47ca5b985afd86e76f2bc1b5e1c93"
+        },
+        {
+          "number": 656,
+          "title": "support double set/get",
+          "url": "https://github.com/stephane/libmodbus/pull/656",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "7e7256b263068428755f518896386b6e48ccb958"
+        },
+        {
+          "number": 655,
+          "title": "Catch some buildsystem errors",
+          "url": "https://github.com/stephane/libmodbus/pull/655",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "08aa285de850d5bfe39f46c98949f043c3573f52"
+        },
+        {
+          "number": 653,
+          "title": "Fix doc links",
+          "url": "https://github.com/stephane/libmodbus/pull/653",
+          "state": "closed",
+          "merged_at": "2022-10-03T20:20:15Z",
+          "head_sha": "0381cc6a2c5b9d443768a870b989167f2ce27044"
+        },
+        {
+          "number": 651,
+          "title": "Oss-fuzz initialize",
+          "url": "https://github.com/stephane/libmodbus/pull/651",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "faf351a7ce38a9b982c98dd9a983f2a9e902e030"
+        },
+        {
+          "number": 649,
+          "title": "Implement function (0x2B / 0x0E) Read Device Identification.",
+          "url": "https://github.com/stephane/libmodbus/pull/649",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "f14fd172e0fe8a21b0819d19c43dc07e8bebea6d"
+        },
+        {
+          "number": 646,
+          "title": "Added a client context parameter to the modbus_t context, and getter/setter methods.",
+          "url": "https://github.com/stephane/libmodbus/pull/646",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "3bf12292f7da9c2d872d69049d5d32b91e775ed9"
+        },
+        {
+          "number": 644,
+          "title": "Fixed MODBUS_ERROR_RECOVERY_LINK not working on Windows.",
+          "url": "https://github.com/stephane/libmodbus/pull/644",
+          "state": "closed",
+          "merged_at": "2022-08-17T13:05:17Z",
+          "head_sha": "bbc7e085707f1b9c66d4be7d093f37df0eb90484"
+        },
+        {
+          "number": 642,
+          "title": "Compute PDU length from MBAP Length field directly.",
+          "url": "https://github.com/stephane/libmodbus/pull/642",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "cb5aa3892af1ec78445e2dcd8a9b9952b5453d83"
+        },
+        {
+          "number": 641,
+          "title": "Compute PDU length from MBAP Length field directly.",
+          "url": "https://github.com/stephane/libmodbus/pull/641",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "17b3ea289059174b42a1ad73971c9cb729e211ff"
+        },
+        {
+          "number": 635,
+          "title": "libmodbus change needed for lua-libmodbus",
+          "url": "https://github.com/stephane/libmodbus/pull/635",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "589147102100a88147a86304fbf2fe971fc595e0"
+        },
+        {
+          "number": 634,
+          "title": "Update modbus.c",
+          "url": "https://github.com/stephane/libmodbus/pull/634",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "1dd0e3dafe219d58ca3fc20528771f01d78ad70b"
+        },
+        {
+          "number": 633,
+          "title": "need modbus_send_raw_msg for lua-libmodbus",
+          "url": "https://github.com/stephane/libmodbus/pull/633",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "19f6d2a00c486fb03a8181b2c30368e0f0bd9049"
+        },
+        {
+          "number": 631,
+          "title": "VCLinkerTool version 1.0.0 to 1.0, NO link error",
+          "url": "https://github.com/stephane/libmodbus/pull/631",
+          "state": "closed",
+          "merged_at": "2022-07-29T10:39:39Z",
+          "head_sha": "104bd5c4d75536603d0854f671f0b3842bd8e6bf"
+        },
+        {
+          "number": 624,
+          "title": "Minor documentation correction",
+          "url": "https://github.com/stephane/libmodbus/pull/624",
+          "state": "closed",
+          "merged_at": "2022-01-25T23:01:44Z",
+          "head_sha": "1ab23deab517c7ffd2086f0bef0d8b3fe65f6595"
+        },
+        {
+          "number": 623,
+          "title": "Minor documentation correction",
+          "url": "https://github.com/stephane/libmodbus/pull/623",
+          "state": "closed",
+          "merged_at": "2022-01-25T23:02:17Z",
+          "head_sha": "7ef405753aac2725ec30d6ab9ba8e50f1441cce7"
+        },
+        {
+          "number": 622,
+          "title": "Fix network library detection on Haiku",
+          "url": "https://github.com/stephane/libmodbus/pull/622",
+          "state": "closed",
+          "merged_at": "2022-01-25T23:03:34Z",
+          "head_sha": "d6b2738362b8f074ce8c8575dbb2df70e05370b4"
+        },
+        {
+          "number": 619,
+          "title": "modbus_reply: fix copy & paste error in sanity check (fixes #614)",
+          "url": "https://github.com/stephane/libmodbus/pull/619",
+          "state": "closed",
+          "merged_at": "2022-01-08T22:44:04Z",
+          "head_sha": "b4ef4c17d618eba0adccc4c7d9e9a1ef809fc9b6"
+        },
+        {
+          "number": 617,
+          "title": "feat(modbus): use poll() for Linux instead of select()",
+          "url": "https://github.com/stephane/libmodbus/pull/617",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "244006169fe6e4501f2d4fea9b4b0f04a5927f06"
+        },
+        {
+          "number": 616,
+          "title": "Make sub-command more clear",
+          "url": "https://github.com/stephane/libmodbus/pull/616",
+          "state": "closed",
+          "merged_at": "2022-02-21T23:41:11Z",
+          "head_sha": "aa5051903a22de74e3291e634a25daddb81fc100"
+        },
+        {
+          "number": 610,
+          "title": "Adding TCP server handling to libmodbus",
+          "url": "https://github.com/stephane/libmodbus/pull/610",
+          "state": "open",
+          "merged_at": null,
+          "head_sha": "66eb68e0970ed0c5496b0c4decc4f110c8bc4340"
+        },
+        {
+          "number": 607,
+          "title": "fixed double free for serial RTU",
+          "url": "https://github.com/stephane/libmodbus/pull/607",
+          "state": "closed",
+          "merged_at": "2022-01-07T14:58:32Z",
+          "head_sha": "3aa2274dbc5dbb950f7fb74b34ea2d97a75e40f6"
+        },
+        {
+          "number": 604,
+          "title": "code cleanups",
+          "url": "https://github.com/stephane/libmodbus/pull/604",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "835fd84bd6a0c918926448800d452cea79fad442"
+        },
+        {
+          "number": 603,
+          "title": "Update modbus-rtu.c, support 256000 baudrate",
+          "url": "https://github.com/stephane/libmodbus/pull/603",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "02397c8c64366872e0d3cf6c85efe3288b3ba236"
+        },
+        {
+          "number": 602,
+          "title": "remove an extra ;",
+          "url": "https://github.com/stephane/libmodbus/pull/602",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": "aaf6d620bf3d85bcaa8b67055a4de6e43a785261"
+        }
+      ]
+    },
+    {
+      "repository": "evcc-io/evcc",
+      "scope": "search: is:pr modbusproxy",
+      "count": 24,
+      "pull_requests": [
+        {
+          "number": 33745,
+          "title": "Modbus proxy: keep default device port after serial round-trip",
+          "url": "https://github.com/evcc-io/evcc/pull/33745",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 34182,
+          "title": "Meter (Huawei EMMA): document Modbus TCP requirements and battery control",
+          "url": "https://github.com/evcc-io/evcc/pull/34182",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 32235,
+          "title": "Huawei SUN2000: optimized timing",
+          "url": "https://github.com/evcc-io/evcc/pull/32235",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 32109,
+          "title": "Revert \"API: generate /api/state documentation from UI types\"",
+          "url": "https://github.com/evcc-io/evcc/pull/32109",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 30770,
+          "title": "Add Modbus/TLS support for Kostal KSEM",
+          "url": "https://github.com/evcc-io/evcc/pull/30770",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 26819,
+          "title": "fix: modbusproxy unmarshaling",
+          "url": "https://github.com/evcc-io/evcc/pull/26819",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 26786,
+          "title": "chore: use Go 1.26",
+          "url": "https://github.com/evcc-io/evcc/pull/26786",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 30636,
+          "title": "EEBus: add OHPCF heat pump compressor flexibility",
+          "url": "https://github.com/evcc-io/evcc/pull/30636",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 24015,
+          "title": "Config UI: visualize Modbusproxy",
+          "url": "https://github.com/evcc-io/evcc/pull/24015",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 25584,
+          "title": "Issue UI: add json values",
+          "url": "https://github.com/evcc-io/evcc/pull/25584",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 25024,
+          "title": "Huawei: allow battery charge from PV in hold mode (BC)",
+          "url": "https://github.com/evcc-io/evcc/pull/25024",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 25485,
+          "title": "Add Alpha Duo to pracht-alpha.yaml",
+          "url": "https://github.com/evcc-io/evcc/pull/25485",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 25460,
+          "title": "Translations update from Hosted Weblate",
+          "url": "https://github.com/evcc-io/evcc/pull/25460",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 24671,
+          "title": "Update kostal-plenticore-gen2.yaml",
+          "url": "https://github.com/evcc-io/evcc/pull/24671",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 26211,
+          "title": "Add region parameter to Q Cells Cloud template for North America support",
+          "url": "https://github.com/evcc-io/evcc/pull/26211",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 18237,
+          "title": "Config UI: unify configured state handling",
+          "url": "https://github.com/evcc-io/evcc/pull/18237",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 19001,
+          "title": "Add Huawei SCharger-7KS-S0 / 22KT-S0",
+          "url": "https://github.com/evcc-io/evcc/pull/19001",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 18097,
+          "title": "Add support for SAJ H1 hybrid inverters",
+          "url": "https://github.com/evcc-io/evcc/pull/18097",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 15912,
+          "title": "Modbus: validate protocol",
+          "url": "https://github.com/evcc-io/evcc/pull/15912",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 13319,
+          "title": "Config UI: add missing config sections / partial yaml inputs (BC)",
+          "url": "https://github.com/evcc-io/evcc/pull/13319",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 15818,
+          "title": "Add support for megawatt",
+          "url": "https://github.com/evcc-io/evcc/pull/15818",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 13202,
+          "title": "Add Solax X3-EVC Wallbox",
+          "url": "https://github.com/evcc-io/evcc/pull/13202",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 7961,
+          "title": "Add Deye hybrid inverters",
+          "url": "https://github.com/evcc-io/evcc/pull/7961",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        },
+        {
+          "number": 4981,
+          "title": "Add modbus proxy",
+          "url": "https://github.com/evcc-io/evcc/pull/4981",
+          "state": "closed",
+          "merged_at": null,
+          "head_sha": null
+        }
+      ]
+    }
+  ]
+}
