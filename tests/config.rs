@@ -31,7 +31,15 @@ fn upstream_formats_and_mapping() {
         assert_eq!(config.devices[0].listeners[0].bind, "0.0.0.0:9000");
         assert_eq!(config.devices[0].unit_id_remapping[&1], 0);
         assert_eq!(config.devices[0].modbus.attempts(), 2);
+        assert_eq!(config.monitoring.health_max_age, 30.0);
     }
+}
+
+#[test]
+fn explicit_health_window_is_preserved() {
+    let mut cfg = base();
+    cfg["monitoring"] = json!({"health_max_age": 60});
+    assert_eq!(validate(cfg).unwrap().monitoring.health_max_age, 60.0);
 }
 
 #[test]

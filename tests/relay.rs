@@ -614,11 +614,9 @@ async fn ttl_never_interrupts_active_exchange_and_pacing_is_enforced() {
 }
 
 #[tokio::test]
-async fn monitoring_distinguishes_live_unprobed_healthy_stale_and_failed() {
+async fn monitoring_uses_response_freshness_even_after_backend_failure() {
     let (addr, _, backend) = echo().await;
-    let mut cfg = config(addr);
-    cfg["monitoring"]["health_max_age"] = json!(0.03);
-    let relay = start(cfg).await;
+    let relay = start(config(addr)).await;
     assert!(http(&relay, "/healthz").await.starts_with("HTTP/1.1 200"));
     assert!(http(&relay, "/readyz").await.starts_with("HTTP/1.1 200"));
     assert!(http(&relay, "/health").await.starts_with("HTTP/1.1 503"));
@@ -629,15 +627,94 @@ async fn monitoring_distinguishes_live_unprobed_healthy_stale_and_failed() {
     assert!(metrics.contains("modbus_relay_requests_total{device=\"plc\"} 1\n"));
     assert!(metrics.contains("modbus_relay_request_duration_seconds_count{device=\"plc\"} 1\n"));
     assert!(metrics.contains("# TYPE modbus_relay_request_duration_seconds histogram"));
-    sleep(Duration::from_millis(40)).await;
+    // Advance the freshness window without real sleeps or timers racing TCP I/O.
+    tokio::time::pause();
+    tokio::time::advance(Duration::from_secs(31)).await;
+    tokio::time::resume();
     assert!(http(&relay, "/health").await.starts_with("HTTP/1.1 503"));
+    assert!(
+        http(&relay, "/metrics")
+            .await
+            .contains("modbus_relay_backend_healthy{device=\"plc\"} 0\n")
+    );
+    assert!(http(&relay, "/healthz").await.starts_with("HTTP/1.1 200"));
     exchange(&mut client, &request(2, 1, 2)).await;
+    let last = relay.metrics.devices[0].1.last_success_ms.load(Relaxed);
     drop(backend);
     assert_eq!(
         exchange(&mut client, &request(3, 1, 2)).await.pdu(),
         &[0x83, 11]
     );
+    assert_eq!(
+        relay.metrics.devices[0].1.last_success_ms.load(Relaxed),
+        last
+    );
+    assert!(http(&relay, "/health").await.starts_with("HTTP/1.1 200"));
+    tokio::time::pause();
+    tokio::time::advance(Duration::from_secs(31)).await;
+    tokio::time::resume();
     assert!(http(&relay, "/health").await.starts_with("HTTP/1.1 503"));
+    assert!(http(&relay, "/healthz").await.starts_with("HTTP/1.1 200"));
+    relay.shutdown().await.unwrap();
+}
+
+#[tokio::test]
+async fn disconnecting_on_bad_register_and_retry_does_not_flap_health() {
+    let listener = bound().await;
+    let mut cfg = config(listener.local_addr().unwrap());
+    cfg["devices"][0]["modbus"]["attempts"] = json!(2);
+    let relay = start(cfg).await;
+    let backend = spawn(async move {
+        let (mut first, _) = listener.accept().await.unwrap();
+        let good = receive(&mut first).await;
+        send(&mut first, &response(&good)).await;
+        // Model the reported device behavior: close for this address, including
+        // on the retry, rather than returning an Illegal Data Address exception.
+        assert_eq!(receive(&mut first).await.pdu(), &[3, 0xff, 0xff, 0, 1]);
+        drop(first);
+        let (mut retry, _) = listener.accept().await.unwrap();
+        assert_eq!(receive(&mut retry).await.pdu(), &[3, 0xff, 0xff, 0, 1]);
+        drop(retry);
+        let (mut recovered, _) = listener.accept().await.unwrap();
+        let good = receive(&mut recovered).await;
+        send(&mut recovered, &response(&good)).await;
+        // The test advances the health clock by 31 s while this read is idle.
+        let bad = Frame::read(&mut recovered, false).await.unwrap().0;
+        send(&mut recovered, &bad.exception(2)).await;
+    });
+    let mut client = connect(&relay).await;
+    exchange(&mut client, &request(1, 1, 2)).await;
+    let stats = &relay.metrics.devices[0].1;
+    let last = stats.last_success_ms.load(Relaxed);
+    assert_eq!(
+        exchange(&mut client, &request(2, 1, 0xffff)).await.pdu(),
+        &[0x83, 11]
+    );
+    assert_eq!(stats.last_success_ms.load(Relaxed), last);
+    assert_eq!(stats.failures.load(Relaxed), 2);
+    assert_eq!(stats.retries.load(Relaxed), 1);
+    assert!(http(&relay, "/health").await.starts_with("HTTP/1.1 200"));
+    let metrics = http(&relay, "/metrics").await;
+    assert!(metrics.contains("modbus_relay_backend_healthy{device=\"plc\"} 1\n"));
+    assert!(metrics.contains("modbus_relay_failures_total{device=\"plc\"} 2\n"));
+    assert_eq!(
+        exchange(&mut client, &request(3, 1, 2)).await.pdu(),
+        &[3, 2, 0, 2]
+    );
+
+    // No polling turns health red. A valid device exception then refreshes it.
+    tokio::time::pause();
+    tokio::time::advance(Duration::from_secs(31)).await;
+    tokio::time::resume();
+    assert!(http(&relay, "/health").await.starts_with("HTTP/1.1 503"));
+    assert_eq!(
+        exchange(&mut client, &request(4, 1, 42)).await.pdu(),
+        &[0x83, 2]
+    );
+    assert_eq!(stats.exceptions.load(Relaxed), 1);
+    assert_eq!(stats.responses.load(Relaxed), 3);
+    assert!(http(&relay, "/health").await.starts_with("HTTP/1.1 200"));
+    backend.finish().await;
     relay.shutdown().await.unwrap();
 }
 

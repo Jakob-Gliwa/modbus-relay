@@ -34,7 +34,6 @@ pub struct DeviceMetrics {
     pub bytes_sent: AtomicU64,
     pub bytes_received: AtomicU64,
     pub connected: AtomicBool,
-    pub healthy: AtomicBool,
     pub last_success_ms: AtomicU64,
     pub last_success_unix: AtomicU64,
     pub duration_us: AtomicU64,
@@ -50,11 +49,11 @@ pub struct Metrics {
 }
 
 impl Metrics {
+    /// Passive response freshness. Failed attempts never refresh or invalidate
+    /// the last valid response; zero means no response has been observed yet.
     pub fn healthy(&self, device: &DeviceMetrics) -> bool {
         let last = device.last_success_ms.load(Relaxed);
-        device.healthy.load(Relaxed)
-            && last > 0
-            && self.now_ms().saturating_sub(last) <= self.health_max_age_ms
+        last > 0 && self.now_ms().saturating_sub(last) <= self.health_max_age_ms
     }
     pub fn now_ms(&self) -> u64 {
         self.started.elapsed().as_millis() as u64 + 1
@@ -68,7 +67,6 @@ impl Metrics {
                 .as_secs(),
             Relaxed,
         );
-        device.healthy.store(true, Relaxed);
     }
     pub fn render(&self) -> String {
         let mut text = String::with_capacity(4096 * self.devices.len());
@@ -130,7 +128,7 @@ impl Metrics {
         metric!(
             "backend_healthy",
             "gauge",
-            "Last exchange succeeded and is fresh.",
+            "A valid backend response was received within health_max_age; passive, including Modbus exceptions.",
             |d: &DeviceMetrics| u64::from(self.healthy(d))
         );
         metric!(

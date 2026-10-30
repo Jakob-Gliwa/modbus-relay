@@ -47,6 +47,9 @@ Buildroute, aktuelle Imagegrößen und Optimierungsmessungen stehen im
   einer nur teilweise empfangenen Backend-Antwort.
 - HTTP: Gesundheitsübergänge unbekannt/gesund/veraltet/fehlerhaft, Metrics,
   Methoden, Headergrenzen, HEAD und Verbindungslimit.
+  Health prüft passive Antwortfrische: Verbindungsabbruch bei ungültigem Register
+  einschließlich Retry, anschließende Erholung, ausbleibendes Polling und gültige
+  Modbus-Exceptions. Die 30-Sekunden-Grenze wird mit virtueller Zeit geprüft.
 - CLI: kompatible Optionen, Beispiele, ungültige Parameter, tatsächlicher
   Binary-Start mit einem bzw. mehreren Threads, Healthcheck und SIGTERM.
   Logging umfasst globale Level, Modulfilter, ausgeschaltete Logs und ungültige Filter.

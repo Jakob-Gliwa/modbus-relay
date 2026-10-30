@@ -114,7 +114,7 @@ impl Default for Monitoring {
     fn default() -> Self {
         Self {
             bind: "0.0.0.0:8080".into(),
-            health_max_age: 60.0,
+            health_max_age: 30.0,
             max_connections: 16,
         }
     }

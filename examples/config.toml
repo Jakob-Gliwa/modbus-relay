@@ -1,6 +1,6 @@
 [monitoring]
 bind = "0.0.0.0:8080"
-health_max_age = 60
+health_max_age = 30
 
 [[devices]]
 name = "inverter"
