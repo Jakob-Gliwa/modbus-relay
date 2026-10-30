@@ -15,7 +15,8 @@ nativen Smoke-Test und eine Prüfung ihrer Versionsausgabe vor dem Tagging.
 - Die Rust-Version bleibt 1.99.1. Das Chef-Buildimage ist zusätzlich per Digest
   festgelegt. Im finalen Scratch-Image befindet sich kein Buildwerkzeug.
 - Test- und Produktionsgraph haben getrennte GHA-Cache-Scopes pro Architektur.
-  Der zweite Build desselben Jobs verwendet den bereits warmen lokalen Builder.
+  Jeder Build importiert seine Cache-Quellen erneut. Derselbe Builder allein
+  garantiert keine Wiederverwendung importierter Zwischenstufen.
 - Release-Jobs lesen den Produktionscache von `main`. Sie exportieren keinen
   zusätzlichen Tag-Cache, den `main` später ohnehin nicht lesen könnte.
 - `RELEASE_VERSION` wirkt erst beim Anwendungsbuild. Die Abhängigkeiten werden
@@ -34,12 +35,17 @@ Nach den regulären Builds misst jeder native Docker-Runner einen warmen Build u
 eine reine Quellcodeänderung in einem temporären Kontext. Dabei dürfen keine
 Abhängigkeiten neu kompiliert werden. Die JSON-Ergebnisse werden als Artefakte
 `docker-cache-benchmark-amd64` und `docker-cache-benchmark-arm64` gespeichert.
+Nur für diese Messung werden die Caches zusätzlich lokal exportiert und bei
+jedem Messlauf importiert. Reguläre CI-Läufe benötigen diesen Export nicht.
 
 Lokal nach einem Test- und Image-Build:
 
 ```sh
 python3 scripts/benchmark-docker-cache.py
 ```
+
+Bei einem zuvor importierten Cache dessen Quelle mit `--cache-from` erneut
+angeben, beispielsweise `--cache-from type=local,src=/tmp/build-cache`.
 
 Das Ergebnis liegt unter `target/docker-cache-benchmark.json`. Der ursprüngliche
 Checkout bleibt unverändert. Bei Lockfile-, Compiler- oder Buildimage-Updates muss
