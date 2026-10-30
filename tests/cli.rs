@@ -76,7 +76,9 @@ fn binary_healthcheck_runtime_and_sigterm() {
             let _ = self.0.wait();
         }
     }
-    for workers in ["1", "2"] {
+    // Exercise immediate shutdown repeatedly on both runtime types: health
+    // readiness must imply that signal handlers have already been installed.
+    for workers in ["1", "2"].into_iter().cycle().take(20) {
         let reservation = TcpListener::bind("127.0.0.1:0").unwrap();
         let address = reservation.local_addr().unwrap();
         drop(reservation);
@@ -93,7 +95,7 @@ fn binary_healthcheck_runtime_and_sigterm() {
                     workers,
                 ])
                 .stdout(Stdio::null())
-                .stderr(Stdio::null())
+                .stderr(Stdio::inherit())
                 .spawn()
                 .unwrap(),
         );
@@ -121,7 +123,7 @@ fn binary_healthcheck_runtime_and_sigterm() {
         let start = Instant::now();
         loop {
             if let Some(status) = child.0.try_wait().unwrap() {
-                assert!(status.success());
+                assert!(status.success(), "workers={workers}, status={status}");
                 break;
             }
             assert!(

@@ -144,24 +144,31 @@ async fn run(args: Args) -> Result<(), Error> {
         println!("configuration valid ({} devices)", config.devices.len());
         return Ok(());
     }
+    // Register handlers before any listener can report readiness, including on
+    // worker threads that may serve health checks before this task is polled.
+    let shutdown = shutdown_signal()?;
     let mut relay = Relay::start(config).await?;
     tracing::info!(listeners = ?relay.listeners, monitoring = %relay.monitoring, "modbus-relay ready");
     tokio::select! {
         result = relay.wait() => result?,
-        result = shutdown_signal() => { result?; tracing::info!("shutting down"); relay.shutdown().await?; }
+        result = shutdown => { result?; tracing::info!("shutting down"); relay.shutdown().await?; }
     }
     Ok(())
 }
 
-async fn shutdown_signal() -> io::Result<()> {
+fn shutdown_signal() -> io::Result<impl Future<Output = io::Result<()>>> {
     #[cfg(unix)]
     {
         let mut terminate =
             tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())?;
-        tokio::select! { result = tokio::signal::ctrl_c() => result, _ = terminate.recv() => Ok(()) }
+        let mut interrupt =
+            tokio::signal::unix::signal(tokio::signal::unix::SignalKind::interrupt())?;
+        Ok(async move {
+            tokio::select! { _ = interrupt.recv() => Ok(()), _ = terminate.recv() => Ok(()) }
+        })
     }
     #[cfg(not(unix))]
     {
-        tokio::signal::ctrl_c().await
+        Ok(async { tokio::signal::ctrl_c().await })
     }
 }
