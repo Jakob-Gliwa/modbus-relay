@@ -1,6 +1,7 @@
 # Docker Hub: erster Release
 
-Vorbereitetes Ziel: **acidcliff/modbus-relay**. Es wurde noch nichts veröffentlicht.
+Image: [acidcliff/modbus-relay](https://hub.docker.com/r/acidcliff/modbus-relay).
+Version **0.1.0** ist für AMD64 und ARM64 veröffentlicht.
 GitHub bleibt unter **Jakob-Gliwa/modbus-relay**; Docker Hub nutzt **acidcliff**.
 
 ## Einmalig einrichten

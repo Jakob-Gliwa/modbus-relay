@@ -9,8 +9,11 @@ Compatible with the configuration schema of [modbus-proxy](https://github.com/ti
 ```sh
 cp config.example.yaml config.yaml
 # Set your device address in config.yaml.
-docker compose up -d --build
+MODBUS_RELAY_IMAGE=acidcliff/modbus-relay:0.1.0 docker compose up -d --no-build
 ```
+
+Prebuilt images for AMD64 and ARM64: [Docker Hub](https://hub.docker.com/r/acidcliff/modbus-relay).
+To build locally, use `docker compose up -d --build` instead.
 
 Connect clients to port **5020**. The container runs without root privileges on
 `scratch`, with a read-only filesystem and a 32 MiB memory limit by default.
