@@ -49,10 +49,11 @@ def main():
                        "cached_steps": result.stdout.count("CACHED")}
                 results.append(row)
                 print(json.dumps(row), flush=True)
+                args.output.parent.mkdir(parents=True, exist_ok=True)
+                args.output.write_text(json.dumps({"measurements": results}, indent=2) + "\n")
                 if case == "source-change" and set(compiled) - {"modbus-relay"}:
+                    print(result.stdout, flush=True)
                     raise SystemExit("Dependency cache miss on a source-only edit")
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps({"measurements": results}, indent=2) + "\n")
 
 
 if __name__ == "__main__":
