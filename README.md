@@ -47,6 +47,7 @@ Configuration changes require a restart. Only read functions 1–4 are retried b
 default; write retries require explicit configuration.
 
 Docker Hub publishing: [first release guide](docs/dockerhub.md).
+Maintenance: [automatic updates and releases](docs/updates.md).
 
 ## Development
 

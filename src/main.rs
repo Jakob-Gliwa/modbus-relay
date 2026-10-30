@@ -9,7 +9,7 @@ use tokio::{
 
 #[derive(Parser, Debug)]
 #[command(
-    version,
+    version = option_env!("MODBUS_RELAY_VERSION").unwrap_or(env!("CARGO_PKG_VERSION")),
     about = "Bounded Modbus TCP proxy with health and Prometheus endpoints"
 )]
 struct Args {

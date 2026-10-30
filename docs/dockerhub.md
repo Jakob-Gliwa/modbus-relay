@@ -21,16 +21,11 @@ Der Workflow verwendet `acidcliff` fest als Docker-Login und Image-Namespace.
 
 ## Release auslösen
 
-Erst den vorbereiteten Quellstand auf GitHub veröffentlichen und eine grüne CI
-abwarten. Vor dem Push muss die GitHub CLI als `Jakob-Gliwa` angemeldet sein;
-der lokale Push-Hook prüft Account, Ziel und Secrets.
+Neue, erfolgreich geprüfte Commits auf `main` werden automatisch als nächste
+Patchversion veröffentlicht. Details und Pausieren: [Automatische Updates](updates.md).
+Ein manueller Tag ist für Routine-Updates nicht erforderlich.
 
-```sh
-git tag v0.1.0
-git push origin v0.1.0
-```
-
-Der Tag startet **Publish Docker Hub image**. Beide Architekturen werden nativ
+Der Release läuft unter **Publish Docker Hub image**. Beide Architekturen werden nativ
 gebaut. Erst wenn CI und die Smoke-Tests der hochgeladenen Digests bestehen,
 werden die gemeinsamen Tags gesetzt: `0.1.0`, ein Commit-Tag und bei stabilen
 Versionen `latest`. Ein fehlgeschlagener Lauf kann ungetaggte Digests hinterlassen.

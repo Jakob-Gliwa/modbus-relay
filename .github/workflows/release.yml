@@ -6,7 +6,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: dockerhub-release-${{ github.ref }}
+  group: dockerhub-release
   cancel-in-progress: false
 env:
   IMAGE: acidcliff/modbus-relay
@@ -40,6 +40,7 @@ jobs:
         with:
           context: .
           platforms: linux/${{ matrix.arch }}
+          build-args: RELEASE_VERSION=${{ github.ref_name }}
           outputs: type=image,name=acidcliff/modbus-relay,push-by-digest=true,name-canonical=true,push=true
           sbom: true
           provenance: mode=max
@@ -48,8 +49,10 @@ jobs:
       - name: Smoke-test the exact uploaded image before tagging
         env:
           DIGEST: ${{ steps.build.outputs.digest }}
+          RELEASE_TAG: ${{ github.ref_name }}
         run: |
           docker pull "$IMAGE@$DIGEST"
+          test "$(docker run --rm "$IMAGE@$DIGEST" --version)" = "modbus-relay ${RELEASE_TAG#v}"
           python3 scripts/docker-smoke.py "$IMAGE@$DIGEST"
       - name: Export verified digest
         env:
