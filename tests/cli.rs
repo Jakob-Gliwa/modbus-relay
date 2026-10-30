@@ -64,7 +64,7 @@ fn validates_example_configs_and_upstream_cli_without_network() {
 #[test]
 fn binary_healthcheck_runtime_and_sigterm() {
     use std::{
-        net::{TcpListener, TcpStream},
+        net::TcpListener,
         process::{Child, Stdio},
         thread::sleep,
         time::{Duration, Instant},
@@ -100,19 +100,21 @@ fn binary_healthcheck_runtime_and_sigterm() {
                 .unwrap(),
         );
         let start = Instant::now();
-        while TcpStream::connect(address).is_err() {
+        loop {
+            // A bound TCP socket can accept connections before the service is
+            // ready, particularly with worker threads and coverage enabled.
+            let probe = run(&["--healthcheck", &address.to_string()]);
+            if probe.status.success() {
+                break;
+            }
             assert!(
                 start.elapsed() < Duration::from_secs(3),
-                "binary did not start"
+                "binary did not become ready: {}",
+                String::from_utf8_lossy(&probe.stderr)
             );
             assert!(child.0.try_wait().unwrap().is_none());
             sleep(Duration::from_millis(5));
         }
-        assert!(
-            run(&["--healthcheck", &address.to_string()])
-                .status
-                .success()
-        );
         assert!(
             Command::new("sh")
                 .args(["-c", "kill -TERM \"$1\"", "test", &child.0.id().to_string()])
