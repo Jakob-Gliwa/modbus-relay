@@ -15,8 +15,9 @@ nativen Smoke-Test und eine Prüfung ihrer Versionsausgabe vor dem Tagging.
 - Die Rust-Version bleibt 1.99.1. Das Chef-Buildimage ist zusätzlich per Digest
   festgelegt. Im finalen Scratch-Image befindet sich kein Buildwerkzeug.
 - Test- und Produktionsgraph haben getrennte GHA-Cache-Scopes pro Architektur.
-  Jeder Build importiert seine Cache-Quellen erneut. Derselbe Builder allein
-  garantiert keine Wiederverwendung importierter Zwischenstufen.
+  Jeder Build importiert nur seinen eigenen Graphen erneut. Derselbe Builder
+  allein garantiert keine Wiederverwendung importierter Zwischenstufen;
+  überlappende Importe können unterschiedliche Elternschichten auswählen.
 - Release-Jobs lesen den Produktionscache von `main`. Sie exportieren keinen
   zusätzlichen Tag-Cache, den `main` später ohnehin nicht lesen könnte.
 - `RELEASE_VERSION` wirkt erst beim Anwendungsbuild. Die Abhängigkeiten werden
@@ -44,8 +45,8 @@ Lokal nach einem Test- und Image-Build:
 python3 scripts/benchmark-docker-cache.py
 ```
 
-Bei einem zuvor importierten Cache dessen Quelle mit `--cache-from` erneut
-angeben, beispielsweise `--cache-from type=local,src=/tmp/build-cache`.
+Bei zuvor importierten Caches die Quellen mit `--test-cache-from` und
+`--runtime-cache-from` erneut angeben, jeweils etwa `type=local,src=/tmp/test-cache`.
 
 Das Ergebnis liegt unter `target/docker-cache-benchmark.json`. Der ursprüngliche
 Checkout bleibt unverändert. Bei Lockfile-, Compiler- oder Buildimage-Updates muss

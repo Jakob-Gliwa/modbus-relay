@@ -106,9 +106,7 @@ jobs:
           platforms: linux/${{ matrix.arch }}
           target: test
           outputs: type=cacheonly
-          cache-from: |
-            type=gha,scope=docker-tests-v2-${{ matrix.arch }}
-            type=gha,scope=docker-build-v2-${{ matrix.arch }}
+          cache-from: type=gha,scope=docker-tests-v2-${{ matrix.arch }}
           cache-to: |
             type=gha,mode=max,scope=docker-tests-v2-${{ matrix.arch }}
             ${{ github.event_name == 'workflow_dispatch' && inputs.benchmark_docker_cache && format('type=local,dest={0}/docker-test-cache,mode=max', runner.temp) || '' }}
@@ -119,10 +117,8 @@ jobs:
           platforms: linux/${{ matrix.arch }}
           load: true
           tags: modbus-relay:test
-          # Imported intermediate records must be supplied on every build.
-          cache-from: |
-            type=gha,scope=docker-tests-v2-${{ matrix.arch }}
-            type=gha,scope=docker-build-v2-${{ matrix.arch }}
+          # Reimport this target's graph; overlapping graphs can select different parents.
+          cache-from: type=gha,scope=docker-build-v2-${{ matrix.arch }}
           cache-to: |
             type=gha,mode=max,scope=docker-build-v2-${{ matrix.arch }}
             ${{ github.event_name == 'workflow_dispatch' && inputs.benchmark_docker_cache && format('type=local,dest={0}/docker-runtime-cache,mode=max', runner.temp) || '' }}
@@ -130,8 +126,8 @@ jobs:
       - if: github.event_name == 'workflow_dispatch' && inputs.benchmark_docker_cache
         run: |
           python3 scripts/benchmark-docker-cache.py \
-            --cache-from "type=local,src=$RUNNER_TEMP/docker-test-cache" \
-            --cache-from "type=local,src=$RUNNER_TEMP/docker-runtime-cache"
+            --test-cache-from "type=local,src=$RUNNER_TEMP/docker-test-cache" \
+            --runtime-cache-from "type=local,src=$RUNNER_TEMP/docker-runtime-cache"
       - if: always() && github.event_name == 'workflow_dispatch' && inputs.benchmark_docker_cache
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:

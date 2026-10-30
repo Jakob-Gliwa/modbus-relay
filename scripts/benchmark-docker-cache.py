@@ -14,8 +14,9 @@ import time
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=Path("target/docker-cache-benchmark.json"))
-    parser.add_argument("--cache-from", action="append", default=[],
-                        help="BuildKit cache source; repeat for test and runtime caches")
+    for target in ("test", "runtime"):
+        parser.add_argument(f"--{target}-cache-from",
+                            help=f"BuildKit cache source for the {target} target")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     results = []
@@ -35,7 +36,8 @@ def main():
             for target in ("test", "runtime"):
                 command = ["docker", "buildx", "build", "--progress=plain",
                            "--output=type=cacheonly", "--target", target]
-                for cache in args.cache_from:
+                cache = getattr(args, target + "_cache_from")
+                if cache:
                     command += ["--cache-from", cache]
                 if os.environ.get("BUILD_CA_FILE"):
                     command += ["--secret", "id=build_ca,src=" + os.environ["BUILD_CA_FILE"]]
