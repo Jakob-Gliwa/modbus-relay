@@ -105,6 +105,9 @@ impl Relay {
                 result = tasks.join_next() => match result {
                     Some(Ok(Err(error))) => Err(error),
                     Some(Err(error)) => Err(io::Error::other(error)),
+                    // Another runtime thread may finish a service after the
+                    // stop branch was polled but before join_next was polled.
+                    Some(Ok(Ok(()))) if *stopped.borrow() => Ok(()),
                     _ => Err(io::Error::other("service task stopped unexpectedly")),
                 }
             };

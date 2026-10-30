@@ -51,6 +51,19 @@ async fn start(value: Value) -> Relay {
         .await
         .unwrap()
 }
+
+#[tokio::test(flavor = "multi_thread", worker_threads = 2)]
+async fn immediate_multithreaded_shutdown_is_successful() {
+    let address = "127.0.0.1:1".parse().unwrap();
+    for _ in 0..200 {
+        let relay = start(config(address)).await;
+        timeout(Duration::from_secs(3), relay.shutdown())
+            .await
+            .expect("shutdown stalled")
+            .expect("normal shutdown reported a service failure");
+    }
+}
+
 fn request(tid: u16, unit: u8, value: u16) -> Frame {
     Frame::new(tid, unit, &[3, (value >> 8) as u8, value as u8, 0, 1]).unwrap()
 }
