@@ -12,6 +12,10 @@ on:
         description: Compare cargo test and nextest on the Linux runner
         type: boolean
         default: false
+      benchmark_docker_cache:
+        description: Measure warm and source-only Docker rebuilds on native runners
+        type: boolean
+        default: false
 permissions:
   contents: read
 concurrency:
@@ -102,8 +106,10 @@ jobs:
           platforms: linux/${{ matrix.arch }}
           target: test
           outputs: type=cacheonly
-          cache-from: type=gha,scope=docker-${{ matrix.arch }}
-          cache-to: type=gha,mode=max,scope=docker-${{ matrix.arch }}
+          cache-from: |
+            type=gha,scope=docker-tests-v2-${{ matrix.arch }}
+            type=gha,scope=docker-build-v2-${{ matrix.arch }}
+          cache-to: type=gha,mode=max,scope=docker-tests-v2-${{ matrix.arch }}
       - name: Load final scratch image
         uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc
         with:
@@ -111,8 +117,17 @@ jobs:
           platforms: linux/${{ matrix.arch }}
           load: true
           tags: modbus-relay:test
-          cache-from: type=gha,scope=docker-${{ matrix.arch }}
+          # The same builder already imported both caches in the preceding step.
+          cache-to: type=gha,mode=max,scope=docker-build-v2-${{ matrix.arch }}
       - run: python3 scripts/docker-smoke.py modbus-relay:test
+      - if: github.event_name == 'workflow_dispatch' && inputs.benchmark_docker_cache
+        run: python3 scripts/benchmark-docker-cache.py
+      - if: github.event_name == 'workflow_dispatch' && inputs.benchmark_docker_cache
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: docker-cache-benchmark-${{ matrix.arch }}
+          path: target/docker-cache-benchmark.json
+          retention-days: 14
   dependencies:
     runs-on: ubuntu-24.04
     timeout-minutes: 10

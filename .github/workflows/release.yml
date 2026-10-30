@@ -5,6 +5,7 @@ on:
     tags: ["v*"]
 permissions:
   contents: read
+  actions: read
 concurrency:
   group: dockerhub-release
   cancel-in-progress: false
@@ -13,7 +14,20 @@ env:
 jobs:
   verify:
     if: github.repository == 'Jakob-Gliwa/modbus-relay' && startsWith(github.ref, 'refs/tags/v')
-    uses: ./.github/workflows/ci.yml
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      source_sha: ${{ steps.verify.outputs.source_sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Require successful main CI for this exact commit
+        id: verify
+        run: python3 scripts/verify-release.py
+        env:
+          GH_TOKEN: ${{ github.token }}
   publish:
     needs: verify
     strategy:
@@ -29,6 +43,8 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ needs.verify.outputs.source_sha }}
       - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069
       - uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6
         with:
@@ -44,8 +60,8 @@ jobs:
           outputs: type=image,name=acidcliff/modbus-relay,push-by-digest=true,name-canonical=true,push=true
           sbom: true
           provenance: mode=max
-          cache-from: type=gha,scope=docker-${{ matrix.arch }}
-          cache-to: type=gha,mode=max,scope=docker-${{ matrix.arch }}
+          cache-from: type=gha,scope=docker-build-v2-${{ matrix.arch }}
+          # A tag-scoped cache cannot be reused by main; do not export it.
       - name: Smoke-test the exact uploaded image before tagging
         env:
           DIGEST: ${{ steps.build.outputs.digest }}
