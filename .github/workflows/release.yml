@@ -1,49 +1,106 @@
-name: Publish Docker image
+name: Publish Docker Hub image
 on:
   workflow_dispatch:
   push:
     tags: ["v*"]
 permissions:
   contents: read
-  packages: write
+concurrency:
+  group: dockerhub-release-${{ github.ref }}
+  cancel-in-progress: false
+env:
+  IMAGE: acidcliff/modbus-relay
 jobs:
   verify:
+    if: github.repository == 'Jakob-Gliwa/modbus-relay' && startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/ci.yml
   publish:
     needs: verify
-    if: github.repository_owner == 'Jakob-Gliwa'
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: amd64
+            runner: ubuntu-24.04
+          - arch: arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    environment: dockerhub
+    timeout-minutes: 25
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: dtolnay/rust-toolchain@d124f86f28ff42855784ff3319f48ac182c248f8 # 1.99.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069
+      - uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6
         with:
-          toolchain: 1.99.1
-      - run: cargo test --locked --all-targets
-      - uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4.4.0
-      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
-      - run: docker build -t modbus-relay:test .
-      - run: python3 scripts/docker-smoke.py modbus-relay:test
-      - id: image
-        shell: bash
-        run: echo "name=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
-      - uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4.7.0
+          username: acidcliff
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build native image and push immutable digest
+        id: build
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
+          context: .
+          platforms: linux/${{ matrix.arch }}
+          outputs: type=image,name=acidcliff/modbus-relay,push-by-digest=true,name-canonical=true,push=true
+          sbom: true
+          provenance: mode=max
+          cache-from: type=gha,scope=docker-${{ matrix.arch }}
+          cache-to: type=gha,mode=max,scope=docker-${{ matrix.arch }}
+      - name: Smoke-test the exact uploaded image before tagging
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          docker pull "$IMAGE@$DIGEST"
+          python3 scripts/docker-smoke.py "$IMAGE@$DIGEST"
+      - name: Export verified digest
+        env:
+          DIGEST: ${{ steps.build.outputs.digest }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/digests"
+          touch "$RUNNER_TEMP/digests/${DIGEST#sha256:}"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: digests-${{ matrix.arch }}
+          path: ${{ runner.temp }}/digests/*
+          if-no-files-found: error
+          retention-days: 1
+  tag:
+    needs: publish
+    runs-on: ubuntu-24.04
+    environment: dockerhub
+    timeout-minutes: 10
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          pattern: digests-*
+          merge-multiple: true
+          path: ${{ runner.temp }}/digests
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069
+      - uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6
+        with:
+          username: acidcliff
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302
         id: meta
         with:
-          images: ${{ steps.image.outputs.name }}
+          images: acidcliff/modbus-relay
           tags: |
             type=semver,pattern={{version}}
             type=sha
-      - uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
-        with:
-          context: .
-          platforms: linux/amd64,linux/arm64
-          push: true
-          sbom: true
-          provenance: mode=max
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+      - name: Tag the two verified platforms as one image
+        env:
+          METADATA_JSON: ${{ steps.meta.outputs.json }}
+        run: |
+          python3 - <<'PYTHON'
+          import json, os, re, subprocess
+          from pathlib import Path
+          digests = sorted(p.name for p in (Path(os.environ['RUNNER_TEMP']) / 'digests').iterdir())
+          assert len(digests) == 2 and all(re.fullmatch('[a-f0-9]{64}', d) for d in digests)
+          tags = json.loads(os.environ['METADATA_JSON'])['tags']
+          assert tags and all(t.startswith('acidcliff/modbus-relay:') for t in tags)
+          command = ['docker', 'buildx', 'imagetools', 'create']
+          for tag in tags:
+              command.extend(['--tag', tag])
+          command.extend('acidcliff/modbus-relay@sha256:' + d for d in digests)
+          subprocess.run(command, check=True)
+          subprocess.run(['docker', 'buildx', 'imagetools', 'inspect', tags[0]], check=True)
+          PYTHON

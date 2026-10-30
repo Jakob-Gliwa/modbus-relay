@@ -43,6 +43,8 @@ Logs go to stderr. Set `RUST_LOG=info` or `RUST_LOG=modbus_relay=debug`.
 Configuration changes require a restart. Only read functions 1–4 are retried by
 default; write retries require explicit configuration.
 
+Docker Hub publishing: [first release guide](docs/dockerhub.md).
+
 ## Development
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the pinned Rust toolchain and checks.

@@ -1,6 +1,6 @@
 services:
   modbus-relay:
-    image: modbus-relay:local
+    image: ${MODBUS_RELAY_IMAGE:-modbus-relay:local}
     build: .
     restart: unless-stopped
     ports:

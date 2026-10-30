@@ -1,0 +1,68 @@
+{
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "nextest": "cargo-nextest 0.9.133 (65e806bd5 2026-04-14)",
+  "threads": 2,
+  "property_cases": 2048,
+  "builds_precompiled": true,
+  "commands": {
+    "cargo-test": [
+      "cargo",
+      "test",
+      "--locked",
+      "--all-targets",
+      "--",
+      "--test-threads=2"
+    ],
+    "nextest": [
+      "cargo",
+      "nextest",
+      "run",
+      "--locked",
+      "--all-targets",
+      "--test-threads",
+      "2"
+    ]
+  },
+  "runs": [
+    {
+      "runner": "cargo-test",
+      "round": 1,
+      "seconds": 3.5720275829999997,
+      "tests_passed": 68
+    },
+    {
+      "runner": "nextest",
+      "round": 1,
+      "seconds": 8.307428084,
+      "tests_passed": 68
+    },
+    {
+      "runner": "nextest",
+      "round": 2,
+      "seconds": 9.105209750000002,
+      "tests_passed": 68
+    },
+    {
+      "runner": "cargo-test",
+      "round": 2,
+      "seconds": 3.353474166999998,
+      "tests_passed": 68
+    },
+    {
+      "runner": "cargo-test",
+      "round": 3,
+      "seconds": 3.352500708000001,
+      "tests_passed": 68
+    },
+    {
+      "runner": "nextest",
+      "round": 3,
+      "seconds": 8.312077166999998,
+      "tests_passed": 68
+    }
+  ],
+  "median_seconds": {
+    "cargo-test": 3.353474166999998,
+    "nextest": 8.312077166999998
+  }
+}

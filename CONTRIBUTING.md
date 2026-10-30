@@ -7,8 +7,8 @@ Docker and CI use the same compiler version. Cargo.lock is committed.
 ```sh
 cargo fmt --check
 cargo clippy --locked --all-targets -- -D warnings
-cargo nextest run --locked --all-targets
-cargo nextest run --release --locked --all-targets
+cargo test --locked --all-targets
+cargo test --release --locked --all-targets
 cargo test --locked --doc
 cargo llvm-cov --locked --all-targets --ignore-filename-regex 'examples/' --fail-under-lines 95
 cargo deny check
@@ -16,7 +16,8 @@ cargo deny check
 
 Install development commands with `cargo install --locked cargo-nextest
 cargo-llvm-cov cargo-deny`. They are development tools, not runtime dependencies.
-Run `cargo test --locked --all-targets` if nextest is unavailable.
+Local measurements favor `cargo test`; CI uses `cargo nextest run --profile ci`
+with the available CPU count. See [runner comparison](docs/test-runners.md).
 Tests use loopback sockets and simulated devices; no real hardware is needed.
 Set `PROPTEST_CASES=2048` for extended property checks.
 
