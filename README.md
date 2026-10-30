@@ -53,6 +53,7 @@ default; write retries require explicit configuration.
 
 Docker Hub publishing: [first release guide](docs/dockerhub.md).
 Maintenance: [automatic updates and releases](docs/updates.md).
+Build performance: [CI caching and measurements](docs/build-ci.md).
 
 ## Development
 
