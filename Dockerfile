@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM lukemathwalker/cargo-chef:0.1.78-rust-1.99.1-alpine@sha256:2c27e67049f17e8b67d882a2cf2f5e1a1d4d71c206ec97f91edf278254688e95 AS chef
+FROM lukemathwalker/cargo-chef:0.1.78-rust-1.99.1-alpine@sha256:000cac9096459ebc31e55e1a99bed090b1ce3511f006b4b101fd2d4f4bcb4d1e AS chef
 WORKDIR /build
 
 FROM chef AS planner
