@@ -12,8 +12,9 @@ nativen Smoke-Test und eine Prüfung ihrer Versionsausgabe vor dem Tagging.
   Normale Änderungen an Rust-Dateien verändern dieses Rezept nicht.
 - Produktions- und Testabhängigkeiten werden vor den echten Quellen gebaut.
   Original-Manifeste werden danach wiederhergestellt; Chef verwendet Platzhalter.
-- Die Rust-Version bleibt 1.99.1. Das Chef-Buildimage ist zusätzlich per Digest
-  festgelegt. Im finalen Scratch-Image befindet sich kein Buildwerkzeug.
+- Die Rust-Version ist 1.100.0. `rust-toolchain.toml`, Chef-Image und die
+  gepinnte CI-Action werden gemeinsam angehoben. Das Chef-Buildimage ist
+  zusätzlich per Digest festgelegt. Im finalen Scratch-Image befindet sich kein Buildwerkzeug.
 - Test- und Produktionsgraph haben getrennte GHA-Cache-Scopes pro Architektur.
   Jeder Build importiert nur seinen eigenen Graphen erneut. Derselbe Builder
   allein garantiert keine Wiederverwendung importierter Zwischenstufen;
