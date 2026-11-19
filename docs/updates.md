@@ -1,7 +1,8 @@
 # Automatische Updates und Releases
 
 Dependabot prüft Rust-Abhängigkeiten täglich, Actions und Docker-Basisimages
-wöchentlich. GitHubs Sicherheitsupdates reagieren unabhängig davon auf bekannte
+wöchentlich. Actions-Updates schlägt es erst vor, wenn die neue Version sieben
+Tage alt ist. GitHubs Sicherheitsupdates reagieren unabhängig davon auf bekannte
 Schwachstellen. Die vollständige CI läuft zusätzlich täglich mit `cargo deny`.
 
 Automatisch gemergt werden ausschließlich Dependabot-PRs, die genau eine dieser
@@ -16,7 +17,9 @@ Dateien ändern:
 Andere Änderungen, etwa an GitHub Actions oder neuen Image-Tags, bleiben zur
 manuellen Prüfung offen, auch wenn sie eine Sicherheitslücke beheben.
 
-`main` verlangt einen PR und alle sechs CI-Checks auf aktuellem Basisstand.
+`main` verlangt einen PR und alle sechs CI-Checks. Der PR muss dafür nicht auf
+dem neuesten `main`-Stand sein: Nach jedem Merge läuft die vollständige CI auf
+`main` erneut, und nur ein grüner Lauf führt zu einem Release.
 Die Automatisierung umgeht diese Regeln nicht. Ihr Workflow führt ausschließlich
 Code von `main` aus und lädt keinen PR-Code mit Schreibrechten.
 
