@@ -11,6 +11,9 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    # Let compromised action releases surface before they reach release.yml.
+    cooldown:
+      default-days: 7
   - package-ecosystem: docker
     directory: /
     schedule:
