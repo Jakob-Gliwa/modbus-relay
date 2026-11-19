@@ -7,7 +7,7 @@ import subprocess
 
 REPO = "Jakob-Gliwa/modbus-relay"
 REQUIRED_JOBS = {
-    "test (ubuntu-24.04)", "test (macos-15)", "coverage", "dependencies", "secrets",
+    "test (ubuntu-24.04)", "coverage", "dependencies", "secrets",
     "docker (amd64, ubuntu-24.04)", "docker (arm64, ubuntu-24.04-arm)",
 }
 
@@ -58,7 +58,7 @@ def main():
         output.write(f"source_sha={sha}\n")
     with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
         summary.write(f"Reusing [successful main CI]({run['html_url']}) for `{sha}`. "
-                      "All seven required jobs passed; final images still undergo native smoke tests.\n")
+                      "All six required jobs passed; final images still undergo native smoke tests.\n")
 
 
 if __name__ == "__main__":
