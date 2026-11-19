@@ -19,13 +19,29 @@ class PolicyTests(unittest.TestCase):
         self.new["package"][1].update(version="0.3.11", checksum="new")
 
     def test_stable_patch_allowed_including_zero_major(self):
-        self.assertTrue(updates.patch_only(self.old, self.new))
+        self.assertTrue(updates.compatible_update(self.old, self.new))
+        self.new["package"][1]["version"] = "0.3.11+custom"
+        self.assertTrue(updates.compatible_update(self.old, self.new))
+
+    def test_semver_compatible_minor_allowed_with_build_metadata(self):
+        for before, after in [("1.1.8+spec-1.1.0", "1.2.0+spec-1.1.0"), ("2.0.0", "2.1.1")]:
+            with self.subTest(before=before):
+                self.old["package"][1]["version"] = before
+                self.new["package"][1]["version"] = after
+                self.assertTrue(updates.compatible_update(self.old, self.new))
+
+    def test_incompatible_lines_need_review(self):
+        for before, after in [("0.0.3", "0.0.4"), ("1.9.0", "2.0.0"), ("1.2.0+a", "1.2.0+b")]:
+            with self.subTest(before=before):
+                self.old["package"][1]["version"] = before
+                self.new["package"][1]["version"] = after
+                self.assertFalse(updates.compatible_update(self.old, self.new))
 
     def test_minor_major_prerelease_and_downgrade_need_review(self):
-        for value in ["0.4.0", "1.0.0", "0.3.9", "0.3.12-rc.1", "0.3.11+custom"]:
+        for value in ["0.4.0", "1.0.0", "0.3.9", "0.3.12-rc.1"]:
             with self.subTest(value=value):
                 self.new["package"][1]["version"] = value
-                self.assertFalse(updates.patch_only(self.old, self.new))
+                self.assertFalse(updates.compatible_update(self.old, self.new))
 
     def test_source_changes_new_crates_and_local_changes_need_review(self):
         for mutate in [
@@ -36,23 +52,23 @@ class PolicyTests(unittest.TestCase):
         ]:
             value = copy.deepcopy(self.new)
             mutate(value)
-            self.assertFalse(updates.patch_only(self.old, value))
+            self.assertFalse(updates.compatible_update(self.old, value))
 
     def test_unchanged_version_cannot_change_checksum(self):
         self.new["package"][1]["version"] = "0.3.10"
-        self.assertFalse(updates.patch_only(self.old, self.new))
-        self.assertFalse(updates.patch_only(self.old, self.old))
+        self.assertFalse(updates.compatible_update(self.old, self.new))
+        self.assertFalse(updates.compatible_update(self.old, self.old))
 
     def test_multiple_release_lines_and_unchanged_build_metadata(self):
         extra = [{"name": "library", "version": "1.0.0", "source": updates.REGISTRY},
                  {"name": "toml", "version": "1.1.8+spec-1.1.0", "source": updates.REGISTRY}]
         self.old["package"].extend(extra)
         self.new["package"].extend(extra)
-        self.assertTrue(updates.patch_only(self.old, self.new))
+        self.assertTrue(updates.compatible_update(self.old, self.new))
 
     def test_ambiguous_duplicate_versions_need_review(self):
         self.new["package"].append(copy.deepcopy(self.new["package"][1]))
-        self.assertFalse(updates.patch_only(self.old, self.new))
+        self.assertFalse(updates.compatible_update(self.old, self.new))
 
     def test_release_number_is_numeric_and_existing_tag_is_reused(self):
         tags = [("v0.1.9", "old"), ("v0.1.10", "current"), ("v9.0.0-rc.1", "rc")]
@@ -111,12 +127,46 @@ class PolicyTests(unittest.TestCase):
                 updates.publish_main()
                 dispatch.assert_not_called()
 
+    def test_only_base_image_digests_may_change(self):
+        image = "FROM rust:1.99-alpine@sha256:" + "a" * 64 + " AS chef"
+        before = f"# syntax=docker/dockerfile:1\n{image}\nRUN true\n"
+        digest = image.replace("a" * 64, "b" * 64)
+        self.assertTrue(updates.digest_only(before, before.replace(image, digest)))
+        for after in [before,
+                      before.replace(image, digest.replace("1.99", "1.100")),
+                      before.replace(image, digest.replace("rust:", "evil/rust:")),
+                      before.replace(image, digest.replace(" AS chef", " AS other")),
+                      before.replace(image, digest).replace("RUN true", "RUN curl evil"),
+                      before.replace(image, digest) + "RUN extra\n",
+                      before.replace(image, image.replace("@sha256:" + "a" * 64, ""))]:
+            with self.subTest(after=after):
+                self.assertFalse(updates.digest_only(before, after))
+
+    def test_unattended_files_are_routed_to_their_policy(self):
+        pr = {"number": 8, "user": {"login": "dependabot[bot]", "type": "Bot"}, "draft": False,
+              "head": {"sha": "head", "repo": {"full_name": updates.REPO}}, "base": {"sha": "base"}}
+        for filename, merged in [("Dockerfile", True), (".github/workflows/ci.yml", False)]:
+            files = [{"filename": filename, "status": "modified"}]
+            with self.subTest(filename=filename), \
+                 patch.object(updates, "pages", side_effect=[[pr], files]), \
+                 patch.object(updates, "digest_only", return_value=True), \
+                 patch.object(updates, "content", return_value=""), \
+                 patch.object(updates, "api", side_effect=[
+                     {"head": {"sha": "head"}, "mergeable_state": "clean"}, {"merged": True}]) as api, \
+                 patch.object(updates, "dispatch") as dispatch:
+                self.assertEqual(updates.merge_updates(), merged)
+                if merged:
+                    api.assert_called_with("pulls/8/merge", "PUT", {"sha": "head", "merge_method": "squash"})
+                    dispatch.assert_called_once_with("ci.yml", "main")
+                else:
+                    api.assert_not_called()
+
     def test_foreign_author_or_fork_is_never_merged(self):
         for author, repo in [("human", updates.REPO), ("dependabot[bot]", "other/fork")]:
             pr = {"user": {"login": author, "type": "Bot"}, "draft": False,
                   "head": {"repo": {"full_name": repo}}}
             with patch.object(updates, "pages", return_value=[pr]), patch.object(updates, "api") as api:
-                self.assertFalse(updates.merge_patches())
+                self.assertFalse(updates.merge_updates())
                 api.assert_not_called()
 
 

@@ -2,7 +2,7 @@
 
 Die vollständige Suite läuft im PR und auf dem tatsächlichen Merge-Commit.
 Der Release prüft über die GitHub-API, ob genau dieser Commit die jüngste passende
-`main`-CI samt allen sieben Pflichtjobs bestanden hat. Er wiederholt diese Suite
+`main`-CI samt allen sechs Pflichtjobs bestanden hat. Er wiederholt diese Suite
 nicht. Die hochgeladenen AMD64-/ARM64-Images erhalten weiterhin jeweils einen
 nativen Smoke-Test und eine Prüfung ihrer Versionsausgabe vor dem Tagging.
 

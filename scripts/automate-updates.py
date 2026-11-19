@@ -17,13 +17,26 @@ def version(value):
     return tuple(map(int, value.split(".")))
 
 
-def patch_only(before, after):
-    """Conservative policy: same crates and sources, stable patch bumps only."""
+def plain(value):
+    """Build metadata (e.g. toml's +spec-1.1.0) carries no semver meaning."""
+    return value.split("+", 1)[0]
+
+
+def compatible_line(value):
+    """Cargo's semver-compatible release line: 1.x.y, 0.3.y or exactly 0.0.z."""
+    major, minor, patch = (re.split(r"[.-]", plain(value)) + ["", ""])[:3]
+    return (major,) if major != "0" else (major, minor) if minor != "0" else (major, minor, patch)
+
+
+def compatible_update(before, after):
+    """Same crates and sources, stable upgrades within Cargo's compatible release lines.
+
+    Pre-releases, downgrades, incompatible bumps and new or removed crates need review.
+    """
     def packages(data):
         result = {}
         for package in data["package"]:
-            key = (package["name"], package.get("source", ""),
-                   tuple(package["version"].split(".")[:2]))
+            key = (package["name"], package.get("source", ""), compatible_line(package["version"]))
             if key in result:
                 raise ValueError("Multiple versions of a crate need review")
             result[key] = package
@@ -40,13 +53,31 @@ def patch_only(before, after):
                 continue
             if key[1] != REGISTRY:
                 return False
-            a, b = version(previous["version"]), version(current["version"])
-            if a[:2] != b[:2] or b[2] <= a[2]:
+            if version(plain(current["version"])) <= version(plain(previous["version"])):
                 return False
             changed = True
         return changed
     except (KeyError, TypeError, ValueError):
         return False
+
+
+FROM_DIGEST = re.compile(r"FROM (\S+)@sha256:([0-9a-f]{64})(\s.*)?")
+
+
+def digest_only(before, after):
+    """Base images keep their exact name and tag; only pinned digests may change."""
+    old, new = before.splitlines(), after.splitlines()
+    if len(old) != len(new):
+        return False
+    changed = False
+    for previous, current in zip(old, new):
+        if previous == current:
+            continue
+        a, b = FROM_DIGEST.fullmatch(previous), FROM_DIGEST.fullmatch(current)
+        if not a or not b or a[1] != b[1] or a[3] != b[3] or a[2] == b[2]:
+            return False
+        changed = True
+    return changed
 
 
 def release_tag(tags, sha):
@@ -78,9 +109,20 @@ def pages(path):
             for item in page]
 
 
+def content(path, sha):
+    return base64.b64decode(api(f"contents/{path}?ref={sha}")["content"]).decode()
+
+
 def lockfile(sha):
-    result = api(f"contents/Cargo.lock?ref={sha}")
-    return tomllib.loads(base64.b64decode(result["content"]).decode())
+    return tomllib.loads(content("Cargo.lock", sha))
+
+
+# Files Dependabot may change unattended, each with the policy its diff must satisfy.
+UNATTENDED = {
+    "Cargo.lock": lambda base, head: compatible_update(lockfile(base), lockfile(head)),
+    "Dockerfile": lambda base, head: digest_only(content("Dockerfile", base),
+                                                 content("Dockerfile", head)),
+}
 
 
 def dispatch(workflow, ref):
@@ -88,7 +130,7 @@ def dispatch(workflow, ref):
     print(f"Dispatched {workflow} on {ref}", flush=True)
 
 
-def merge_patches():
+def merge_updates():
     for pr in pages("pulls?state=open&base=main&per_page=100"):
         if (pr["user"]["login"] != "dependabot[bot]" or pr["user"]["type"] != "Bot"
                 or pr["draft"] or not pr["head"].get("repo")
@@ -96,10 +138,11 @@ def merge_patches():
             continue
         number, sha = pr["number"], pr["head"]["sha"]
         files = pages(f"pulls/{number}/files?per_page=100")
-        if len(files) != 1 or files[0]["filename"] != "Cargo.lock" or files[0]["status"] != "modified":
+        if (len(files) != 1 or files[0]["filename"] not in UNATTENDED
+                or files[0]["status"] != "modified"):
             print(f"PR #{number}: manual review (files)")
             continue
-        if not patch_only(lockfile(pr["base"]["sha"]), lockfile(sha)):
+        if not UNATTENDED[files[0]["filename"]](pr["base"]["sha"], sha):
             print(f"PR #{number}: manual review (dependency changes)")
             continue
         detail = api(f"pulls/{number}")
@@ -111,7 +154,7 @@ def merge_patches():
         result = api(f"pulls/{number}/merge", "PUT", {"sha": sha, "merge_method": "squash"})
         if not result["merged"]:
             raise RuntimeError(f"PR #{number} was not merged")
-        print(f"Merged patch update #{number}", flush=True)
+        print(f"Merged dependency update #{number}", flush=True)
         dispatch("ci.yml", "main")
         return True  # Serialize updates: test the resulting main first.
     return False
@@ -155,7 +198,7 @@ def main():
     if os.environ.get("GITHUB_REPOSITORY") != REPO:
         raise RuntimeError("Unexpected repository")
     publish_main()
-    merge_patches()
+    merge_updates()
 
 
 if __name__ == "__main__":
